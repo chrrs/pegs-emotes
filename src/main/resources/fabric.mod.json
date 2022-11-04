@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "fabricemotes",
+  "version": "${version}",
+  "name": "Fabric Emotes",
+  "description": "Discord style chat emotes for Minecraft chat.",
+  "authors": [
+    "AlgidSpace"
+  ],
+  "contact": {
+    "homepage": "https://authors.curseforge.com/members/algidspace"
+  },
+  "license": "MIT",
+  "icon": "assets/chatemotes/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "uk.co.algid.fabricemotes.FabricEmotesMod"
+    ]
+  },
+  "mixins": [
+    "fabricemotes.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  }
+}

@@ -1,0 +1,1 @@
+let elms = document.getElementsByClassName("emojiItem-277VFM"); let emotes = []; for (elm of elms) { let but = elm.getElementsByTagName('img')[0]; if (but) { emotes.push({ name: elm.getAttribute('data-name'), src: but.getAttribute('src') })} }; console.log(JSON.stringify(emotes));
