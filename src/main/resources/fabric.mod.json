@@ -1,30 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "fabricemotes",
+  "id": "pegs-emotes",
   "version": "${version}",
-  "name": "Fabric Emotes",
-  "description": "Discord style chat emotes for Minecraft chat.",
+  "name": "PEGS Emotes",
+  "description": "PEGS emotes for Minecraft chat.",
   "authors": [
-    "AlgidSpace"
+    "AlgidSpace",
+    "chrrrs"
   ],
-  "contact": {
-    "homepage": "https://authors.curseforge.com/members/algidspace"
-  },
   "license": "MIT",
   "icon": "assets/chatemotes/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "uk.co.algid.fabricemotes.FabricEmotesMod"
+      "me.chrrrs.pegsemotes.EmotesMod"
     ]
   },
   "mixins": [
-    "fabricemotes.mixins.json"
+    "pegsemotes.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": ">=0.14.10",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "1.19.x",
     "java": ">=17"
   }
 }
