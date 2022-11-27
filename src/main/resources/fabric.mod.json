@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "pegs-emotes",
-  "version": "${version}",
+  "version": "1.1.0",
   "name": "PEGS Emotes",
-  "description": "PEGS emotes for Minecraft chat.",
+  "description": "PEGS Twitch emotes for Minecraft chat.",
   "authors": [
     "AlgidSpace",
-    "chrrrs"
+    "chrrrs",
+    "fluteds"
   ],
   "license": "MIT",
   "icon": "assets/chatemotes/icon.png",
