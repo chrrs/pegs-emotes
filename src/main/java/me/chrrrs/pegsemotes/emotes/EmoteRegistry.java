@@ -44,13 +44,15 @@ public class EmoteRegistry {
             registerEmote(new Emote("Sadge", "sadge.png"));
 
             // Animated
-            // Use: https://sheeptester.github.io/words-go-here/misc/animated-painting-maker.html
-            // For frame time: https://ezgif.com/maker (Frames - multiply delay value by 10 for MS)
+            // Use: https://sheeptester.github.io/words-go-here/misc/animated-painting-maker.html & save image from it for the GIF
+            // For frame time: https://ezgif.com/maker (Frames - Multiply delay value by 10 for milliseconds) EG. peepo-leave = Delay = 2 = frameTimeMs = 20
             registerEmote(new Emote("catJAM", "animated/catjam.png", 40));
             registerEmote(new Emote("HYPERS", "animated/hypers.png", 70));
             registerEmote(new Emote("NODDERS", "animated/nodders.png", 20));
             registerEmote(new Emote("NOPERS", "animated/nopers.png", 70));
+            registerEmote(new Emote("NOTED", "animated/noted.png", 20));
             registerEmote(new Emote("peepoShy", "animated/peepo-shy.png", 250));
+            registerEmote(new Emote("peepoLeave", "animated/peepo-leave.png", 100));
         } catch (Exception e) {
             LOGGER.error("init(): Failed to load emotes", e);
         }
