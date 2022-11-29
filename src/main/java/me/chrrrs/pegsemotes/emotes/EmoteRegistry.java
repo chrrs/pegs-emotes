@@ -32,6 +32,7 @@ public class EmoteRegistry {
 
         try {
             registerEmote(new Emote("Bedge", "bedge.png"));
+            registerEmote(new Emote("Clueless", "clueless.png"));
             registerEmote(new Emote("Hmm", "hmm.png"));
             registerEmote(new Emote("KEKW", "kekw.png"));
             registerEmote(new Emote("Madge", "madge.png"));
@@ -39,18 +40,30 @@ public class EmoteRegistry {
             registerEmote(new Emote("Okayge", "okayge.png"));
             registerEmote(new Emote("peepoHappy", "peepo-happy.png"));
             registerEmote(new Emote("PepeHands", "pepe-hands.png"));
+            registerEmote(new Emote("peepoSit", "peepo-sit.png"));
             registerEmote(new Emote("POGGIES", "poggies.png"));
             registerEmote(new Emote("Prayge", "prayge.png"));
             registerEmote(new Emote("Sadge", "sadge.png"));
+            registerEmote(new Emote("WICKED", "wicked.png"));
 
             // Animated
-            // Use: https://sheeptester.github.io/words-go-here/misc/animated-painting-maker.html
-            // For frame time: https://ezgif.com/maker (Frames - multiply delay value by 10 for MS)
+            // Use: https://sheeptester.github.io/words-go-here/misc/animated-painting-maker.html & save image from it for the GIF
+            // For frame time: https://ezgif.com/maker (Frames - Multiply delay value by 10 for milliseconds) EG. peepo-leave = Delay = 2 x10 = frameTimeMs = 20
+            registerEmote(new Emote("Aware", "animated/aware.png", 50));
+            registerEmote(new Emote("Awkward", "animated/awkward.png", 100));
             registerEmote(new Emote("catJAM", "animated/catjam.png", 40));
+            registerEmote(new Emote("catKISS", "animated/catkiss.png", 70));
+            registerEmote(new Emote("Chatting", "animated/chatting.png", 20));
+            registerEmote(new Emote("DinkDonk", "animated/dink-donk.png", 50));
+            registerEmote(new Emote("COPIUM", "animated/copium.png", 20));
+            registerEmote(new Emote("Drake", "animated/drake.png", 70));
             registerEmote(new Emote("HYPERS", "animated/hypers.png", 70));
             registerEmote(new Emote("NODDERS", "animated/nodders.png", 20));
             registerEmote(new Emote("NOPERS", "animated/nopers.png", 70));
+            registerEmote(new Emote("NOTED", "animated/noted.png", 20));
             registerEmote(new Emote("peepoShy", "animated/peepo-shy.png", 250));
+            registerEmote(new Emote("peepoLeave", "animated/peepo-leave.png", 100));
+            registerEmote(new Emote("YesYes", "animated/yesyes.png", 100));
         } catch (Exception e) {
             LOGGER.error("init(): Failed to load emotes", e);
         }
