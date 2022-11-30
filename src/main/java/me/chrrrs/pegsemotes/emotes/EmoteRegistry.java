@@ -42,9 +42,11 @@ public class EmoteRegistry {
             registerEmote(new Emote("monkaS", "monkas.png"));
             registerEmote(new Emote("Okayge", "okayge.png"));
             registerEmote(new Emote("OMEGALUL", "omegalul.png"));
+            registerEmote(new Emote("PeepoGiggles", "peepo-giggles"));
             registerEmote(new Emote("peepoHappy", "peepo-happy.png"));
             registerEmote(new Emote("PepeHands", "pepe-hands.png"));
             registerEmote(new Emote("peepoSit", "peepo-sit.png"));
+            registerEmote(new Emote("PeepoSmile", "peepo-smile.png"));
             registerEmote(new Emote("POGGIES", "poggies.png"));
             registerEmote(new Emote("PogU", "pogu.png"));
             registerEmote(new Emote("Prayge", "prayge.png"));
@@ -76,9 +78,11 @@ public class EmoteRegistry {
             registerEmote(new Emote("NOTED", "animated/noted.png", 20));
             registerEmote(new Emote("peepoArrive", "animated/peepo-arrive.png", 100));
             registerEmote(new Emote("peepoComfy", "animated/peepo-comfy.png", 100));
-            registerEmote(new Emote("peepoGiggles", "animated/peepo-giggles.png", 30));
+            registerEmote(new Emote("PeepoGiggles", "animated/peepo-giggles.png", 30));
+            registerEmote(new Emote("peepoRun", "animated/peepo-run.png", 40));
             registerEmote(new Emote("peepoShy", "animated/peepo-shy.png", 250));
             registerEmote(new Emote("peepoLeave", "animated/peepo-leave.png", 100));
+            registerEmote(new Emote("peepoWow", "animated/peepo-wow.png", 100));
             registerEmote(new Emote("ppOverheat", "animated/ppoverheat.png", 20));
             registerEmote(new Emote("ppPoof", "animated/pp-poof.png", 30));
             registerEmote(new Emote("TeaTime", "animated/teatime.png", 120));
