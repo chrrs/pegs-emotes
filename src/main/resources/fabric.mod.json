@@ -1,16 +1,20 @@
 {
   "schemaVersion": 1,
   "id": "pegs-emotes",
-  "version": "1.2.0",
+  "version": "1.3.1",
   "name": "PEGS Emotes",
   "description": "PEGS Twitch emotes for Minecraft chat.",
-  "sources": "https://github.com/chrrs/PegsEmotes",
+  "sources": "",
   "issues": "https://github.com/chrrs/PegsEmotes/issues",
   "authors": [
     "AlgidSpace",
     "chrrrs",
     "fluteds"
   ],
+  "contact": {
+    "sources": "https://github.com/chrrs/PegsEmotes",
+    "issues": "https://github.com/chrrs/PegsEmotes/issues"
+  },
   "license": "MIT",
   "icon": "assets/pegs-emotes/icon.png",
   "environment": "client",
