@@ -7,7 +7,8 @@
   ],
   "client": [
     "ChatHudMixin",
-    "ChatMessagesMixin"
+    "ChatMessagesMixin",
+    "ClientCommandSourceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

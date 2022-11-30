@@ -17,13 +17,4 @@ public class ChatMessagesMixin {
 
         return message;
     }
-
-//    @Redirect(method = "refresh", at = @At(value = "INVOKE", target = "Lnet/minecraft/command/CommandSource;getPlayerNames()Ljava/util/Collection;"))
-//    private Collection<String> breakRenderedChatMessageLines(CommandSource commandSource) {
-//        Collection<String> suggestions = EmoteRegistry.getInstance().getEmoteSuggestions();
-//
-//        suggestions.addAll(commandSource.getPlayerNames());
-//
-//        return suggestions;
-//    }
 }
