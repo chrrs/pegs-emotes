@@ -42,6 +42,8 @@ public class EmoteRegistry {
             registerEmote(new Emote("monkaS", "monkas.png"));
             registerEmote(new Emote("Okayge", "okayge.png"));
             registerEmote(new Emote("OMEGALUL", "omegalul.png"));
+            registerEmote(new Emote("PauseChamp", "pausechamp.png"));
+            registerEmote(new Emote("PAUSERS", "pausers.png"));
             registerEmote(new Emote("peepoHappy", "peepo-happy.png"));
             registerEmote(new Emote("PepeHands", "pepe-hands.png"));
             registerEmote(new Emote("peepoSit", "peepo-sit.png"));
