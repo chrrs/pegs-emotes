@@ -88,6 +88,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("TeaTime", "animated/teatime.png", 120));
             registerEmote(new Emote("ThisIsFine", "animated/thisisfine.png", 100));
             registerEmote(new Emote("trevorHug", "animated/trevorhug.png", 100));
+            registerEmote(new Emote("VIBE", "amimated/vibe.png", 40));
             registerEmote(new Emote("WAYTOODANK", "animated/waytoodank.png", 20));
             registerEmote(new Emote("YesYes", "animated/yesyes.png", 100));
         } catch (Exception e) {
