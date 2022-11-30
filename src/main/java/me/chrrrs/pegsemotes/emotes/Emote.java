@@ -1,5 +1,6 @@
 package me.chrrrs.pegsemotes.emotes;
 
+import me.chrrrs.pegsemotes.EmotesMod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
@@ -86,6 +87,14 @@ public class Emote {
 
     public int getSheetHeight() {
         return height * frameCount;
+    }
+
+    public int getRenderedWidth() {
+        return (int) ((double) width / ((double) height / (float) EmotesMod.EMOTE_HEIGHT));
+    }
+
+    public String getReplacement() {
+        return " ".repeat((int) Math.ceil((double) getRenderedWidth() / 4.0f));
     }
 
     public Identifier getTextureIdentifier() {

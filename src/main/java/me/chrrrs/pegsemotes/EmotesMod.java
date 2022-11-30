@@ -11,6 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class EmotesMod implements ClientModInitializer {
+	public static final int EMOTE_HEIGHT = 8;
+
 	private final Logger LOGGER = LogManager.getLogger("pegsemotes.ChatEmotesMod");
 
 	@Override

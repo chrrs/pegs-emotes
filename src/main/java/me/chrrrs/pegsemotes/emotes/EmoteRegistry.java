@@ -1,12 +1,9 @@
 package me.chrrrs.pegsemotes.emotes;
 
-import com.google.common.collect.Lists;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 public class EmoteRegistry {
     private final Logger LOGGER = LogManager.getLogger("pegs-emotes.emotes.EmoteRegistry");
@@ -44,6 +41,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("POGGIES", "poggies.png"));
             registerEmote(new Emote("Prayge", "prayge.png"));
             registerEmote(new Emote("Sadge", "sadge.png"));
+            registerEmote(new Emote("widepeepoHappy", "wide-peepo-happy.png"));
             registerEmote(new Emote("WICKED", "wicked.png"));
 
             // Animated
@@ -84,9 +82,5 @@ public class EmoteRegistry {
 
     public Emote getEmoteByName(String name) {
         return emoteMap.get(name);
-    }
-
-    public Collection<String> getEmoteSuggestions() {
-        return Lists.newArrayList(emoteMap.keys().asIterator()).stream().map((name) -> ":" + name + ":").collect(Collectors.toList());
     }
 }
