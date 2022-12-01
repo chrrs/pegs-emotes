@@ -62,6 +62,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("Aware", "animated/aware.png", 50));
             registerEmote(new Emote("Awkward", "animated/awkward.png", 100));
             registerEmote(new Emote("catJAM", "animated/catjam.png", 40));
+            registerEmote(new Emote("catJAMJAM", "animated/catjamjam", 20));
             registerEmote(new Emote("catKISS", "animated/catkiss.png", 70));
             registerEmote(new Emote("Chatting", "animated/chatting.png", 20));
             registerEmote(new Emote("Clap", "animated/clap.png", 200));
