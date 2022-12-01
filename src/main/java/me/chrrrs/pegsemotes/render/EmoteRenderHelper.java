@@ -19,28 +19,31 @@ public class EmoteRenderHelper {
     public static List<RenderEmote> extractEmotes(TextReaderVisitor textReaderVisitor, TextRenderer textRenderer, float renderX, float renderY) {
         List<RenderEmote> renderEmoteList = new ArrayList<>();
 
-        String message = textReaderVisitor.getString();
+        Pattern pattern = Pattern.compile("\u00a8(\\d+)");
 
-        Pattern emotePattern = Pattern.compile("\u00a8(\\d+)");
-        Matcher matcher = emotePattern.matcher(message);
+        while (true) {
+            String message = textReaderVisitor.getString();
+            Matcher matcher = pattern.matcher(message);
 
-        while (matcher.find()) {
-            try {
-                int id = Integer.parseInt(matcher.group(1));
-                Emote emote = EmoteRegistry.getInstance().getEmoteById(id);
+            if (matcher.find()) {
+                try {
+                    int id = Integer.parseInt(matcher.group(1));
+                    Emote emote = EmoteRegistry.getInstance().getEmoteById(id);
 
-                int startPos = matcher.start(0);
-                int endPos = matcher.end(0);
+                    int startPos = matcher.start(0);
+                    int endPos = matcher.end(0);
 
-                if (emote != null) {
-                    float beforeTextWidth = textRenderer.getWidth(message.substring(0, startPos));
+                    if (emote != null) {
+                        float beforeTextWidth = textRenderer.getWidth(message.substring(0, startPos));
 
-                    renderEmoteList.add(new RenderEmote(emote, renderX + beforeTextWidth, renderY));
-                    textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacement(), Style.EMPTY);
-
-                    break;
+                        renderEmoteList.add(new RenderEmote(emote, renderX + beforeTextWidth, renderY));
+                        textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacement(), Style.EMPTY);
+                    }
+                } catch (NumberFormatException ignored) {
                 }
-            } catch (NumberFormatException ignored) {}
+            } else {
+                break;
+            }
         }
 
         return renderEmoteList;
