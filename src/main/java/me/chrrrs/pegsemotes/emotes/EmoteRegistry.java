@@ -83,6 +83,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("peepoRun", "animated/peepo-run.png", 40));
             registerEmote(new Emote("peepoShy", "animated/peepo-shy.png", 250));
             registerEmote(new Emote("peepoLeave", "animated/peepo-leave.png", 100));
+            registerEmote(new Emote("pepeMeltdown", "animated/pepemeltdown.png", 30));
             registerEmote(new Emote("peepoWow", "animated/peepo-wow.png", 100));
             registerEmote(new Emote("ppOverheat", "animated/ppoverheat.png", 20));
             registerEmote(new Emote("ppPoof", "animated/pp-poof.png", 30));
