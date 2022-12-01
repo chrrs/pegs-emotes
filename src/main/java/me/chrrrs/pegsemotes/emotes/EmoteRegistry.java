@@ -42,6 +42,8 @@ public class EmoteRegistry {
             registerEmote(new Emote("monkaS", "monkas.png"));
             registerEmote(new Emote("Okayge", "okayge.png"));
             registerEmote(new Emote("OMEGALUL", "omegalul.png"));
+            registerEmote(new Emote("PauseChamp", "pausechamp.png"));
+            registerEmote(new Emote("PAUSERS", "pausers.png"));
             registerEmote(new Emote("peepoHappy", "peepo-happy.png"));
             registerEmote(new Emote("PepeHands", "pepe-hands.png"));
             registerEmote(new Emote("peepoSit", "peepo-sit.png"));
@@ -60,6 +62,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("Aware", "animated/aware.png", 50));
             registerEmote(new Emote("Awkward", "animated/awkward.png", 100));
             registerEmote(new Emote("catJAM", "animated/catjam.png", 40));
+            registerEmote(new Emote("catJAMJAM", "animated/catjamjam", 20));
             registerEmote(new Emote("catKISS", "animated/catkiss.png", 70));
             registerEmote(new Emote("Chatting", "animated/chatting.png", 20));
             registerEmote(new Emote("Clap", "animated/clap.png", 200));
@@ -81,6 +84,7 @@ public class EmoteRegistry {
             registerEmote(new Emote("peepoRun", "animated/peepo-run.png", 40));
             registerEmote(new Emote("peepoShy", "animated/peepo-shy.png", 250));
             registerEmote(new Emote("peepoLeave", "animated/peepo-leave.png", 100));
+            registerEmote(new Emote("pepeMeltdown", "animated/pepemeltdown.png", 30));
             registerEmote(new Emote("peepoWow", "animated/peepo-wow.png", 100));
             registerEmote(new Emote("ppOverheat", "animated/ppoverheat.png", 20));
             registerEmote(new Emote("ppPoof", "animated/pp-poof.png", 30));
