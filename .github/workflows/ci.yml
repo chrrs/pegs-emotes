@@ -22,11 +22,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle
+    - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
-      
-    - name: Execute Gradle build
-      run: ./gradlew build
+      with:
+        arguments: build
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
