@@ -21,11 +21,16 @@ public class EmoteRenderHelper {
 
         Pattern pattern = Pattern.compile("\u00a8(\\d+)");
 
-        while (true) {
+        outer: while (true) {
             String message = textReaderVisitor.getString();
             Matcher matcher = pattern.matcher(message);
 
-            if (matcher.find()) {
+            while (true) {
+                // TODO: This is kinda dirty.
+                if (!matcher.find()) {
+                    break outer;
+                }
+
                 try {
                     int id = Integer.parseInt(matcher.group(1));
                     Emote emote = EmoteRegistry.getInstance().getEmoteById(id);
@@ -38,11 +43,11 @@ public class EmoteRenderHelper {
 
                         renderEmoteList.add(new RenderEmote(emote, renderX + beforeTextWidth, renderY));
                         textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacement(), Style.EMPTY);
+
+                        break;
                     }
                 } catch (NumberFormatException ignored) {
                 }
-            } else {
-                break;
             }
         }
 
