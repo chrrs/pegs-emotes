@@ -1,15 +1,15 @@
 {
-  "static": [
-    {
-      "name": "YEP",
-      "emote_url": "/static/YEP.png"
-    }
-  ],
-  "animated": [
-    {
-      "name": "catKISS",
-      "emote_url": "/animated/catKISS.png",
-      "delay": 50
-    }
-  ]
+    "static": [
+        {
+            "name": "YEP",
+            "emote_url": "static/YEP.png"
+        }
+    ],
+    "animated": [
+        {
+            "name": "catKISS",
+            "emote_url": "animated/catKISS.png",
+            "frameTime": 50
+        }
+    ]
 }

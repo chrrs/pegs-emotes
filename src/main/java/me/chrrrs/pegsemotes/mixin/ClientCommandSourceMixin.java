@@ -17,7 +17,7 @@ public class ClientCommandSourceMixin {
     private void addSuggestions(CallbackInfoReturnable<Collection<String>> cir) {
         ArrayList<String> suggestions = new ArrayList<>(cir.getReturnValue());
 
-        for (Emote emote : EmoteRegistry.getInstance().emoteMap.values()) {
+        for (Emote emote : EmoteRegistry.getInstance().getEmotes()) {
             suggestions.add(emote.getName());
         }
 

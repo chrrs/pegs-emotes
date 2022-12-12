@@ -2,37 +2,49 @@ package me.chrrrs.pegsemotes;
 
 import me.chrrrs.pegsemotes.emotes.EmoteRegistry;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.lwjgl.glfw.GLFW;
 
 public class EmotesMod implements ClientModInitializer {
-	public static final int EMOTE_HEIGHT = 8;
+    public static final int EMOTE_HEIGHT = 8;
 
-	private final Logger LOGGER = LogManager.getLogger("pegsemotes.ChatEmotesMod");
+    private static KeyBinding reloadKeyBinding;
 
-	@Override
-	public void onInitializeClient() {
-		LOGGER.info("onInitializeClient(): Loading emotes...");
+    @Override
+    public void onInitializeClient() {
+        reloadKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.pegs-emotes.reload", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F4, "category.pegs-emotes"));
 
-		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(
-			new SimpleSynchronousResourceReloadListener() {
-				@Override
-				public Identifier getFabricId() {
-					return new Identifier("pegs-emotes", "emotes");
-				}
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (reloadKeyBinding.wasPressed()) {
+                EmoteRegistry.getInstance().reload();
+                client.player.sendMessage(Text.literal("Emotes reloaded!").setStyle(Style.EMPTY.withFormatting(Formatting.GRAY)), false);
+            }
+        });
 
-				@Override
-				public void reload(ResourceManager manager) {
-					EmoteRegistry.getInstance().init();
-				}
-			}
-		);
+        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(
+                new SimpleSynchronousResourceReloadListener() {
+                    @Override
+                    public Identifier getFabricId() {
+                        return new Identifier("pegs-emotes", "emotes");
+                    }
 
-		LOGGER.info("onInitializeClient(): Emotes loaded.");
-	}
+                    @Override
+                    public void reload(ResourceManager manager) {
+                        EmoteRegistry.getInstance().disposeEmotes();
+                        EmoteRegistry.getInstance().reload();
+                    }
+                }
+        );
+    }
 }

@@ -1,103 +1,25 @@
 package me.chrrrs.pegsemotes.emotes;
 
-import me.chrrrs.pegsemotes.EmotesMod;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.resource.Resource;
-import net.minecraft.util.Identifier;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+public abstract class Emote {
+    private static final Map<String, Integer> ID_MAP = new HashMap<>();
+    private static int NEXT_EMOTE_ID = 0;
 
-public class Emote {
-    private static int currEmoteId = 0;
+    public abstract int getId();
 
-    private final int id;
+    public abstract String getName();
 
-    private final String name;
-    private final String filename;
+    public abstract String getReplacementText();
 
-    private final int width;
-    private int height;
-
-    private final int frameCount;
-    private final int frameTimeMs;
-
-    public Emote(String name, String filename) throws IOException {
-        this(name, filename, 0);
-    }
-
-    public Emote(String name, String filename, int frameTimeMs) throws IOException {
-        this.id = currEmoteId++;
-
-        this.name = name;
-        this.filename = filename;
-
-        this.frameTimeMs = frameTimeMs;
-
-        Resource resource = MinecraftClient.getInstance().getResourceManager().getResource(getTextureIdentifier()).get();
-        BufferedImage bufferedImage = ImageIO.read(resource.getInputStream());
-
-        if (bufferedImage == null) {
-            throw new IOException("Failed to load image: " + filename);
-        }
-
-        width = bufferedImage.getWidth();
-        height = bufferedImage.getHeight();
-
-        if (isAnimated()) {
-            frameCount = (int) (height / width);
-            height = width;
+    protected static int createId(String name) {
+        if (ID_MAP.containsKey(name)) {
+            return ID_MAP.get(name);
         } else {
-            frameCount = 1;
+            int id = NEXT_EMOTE_ID++;
+            ID_MAP.put(name, id);
+            return id;
         }
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getFrameCount() {
-        return frameCount;
-    }
-
-    public int getFrameTimeMs() {
-        return frameTimeMs;
-    }
-
-    public boolean isAnimated() {
-        return frameTimeMs > 0;
-    }
-
-    public int getSheetWidth() {
-        return width;
-    }
-
-    public int getSheetHeight() {
-        return height * frameCount;
-    }
-
-    public int getRenderedWidth() {
-        return (int) ((double) width / ((double) height / (float) EmotesMod.EMOTE_HEIGHT));
-    }
-
-    public String getReplacement() {
-        return " ".repeat((int) Math.ceil((double) getRenderedWidth() / 4.0f));
-    }
-
-    public Identifier getTextureIdentifier() {
-        return new Identifier("pegs-emotes:emotes/" + filename);
     }
 }

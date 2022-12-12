@@ -9,9 +9,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ChatMessages.class)
 public class ChatMessagesMixin {
-    @ModifyVariable(method = "getRenderedChatMessage", at = @At("HEAD"), ordinal = 0)
+    @ModifyVariable(method = "getRenderedChatMessage", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private static String getRenderedChatMessageParam(String message) {
-        for (Emote emote : EmoteRegistry.getInstance().emoteMap.values()) {
+        for (Emote emote : EmoteRegistry.getInstance().getEmotes()) {
             message = message.replaceAll("\\b" + emote.getName() + "\\b", "\u00a8" + emote.getId());
         }
 

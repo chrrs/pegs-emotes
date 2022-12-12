@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import me.chrrrs.pegsemotes.EmotesMod;
 import me.chrrrs.pegsemotes.emotes.Emote;
 import me.chrrrs.pegsemotes.emotes.EmoteRegistry;
+import me.chrrrs.pegsemotes.emotes.FetchedEmote;
 import me.chrrrs.pegsemotes.text.TextReaderVisitor;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
@@ -16,12 +17,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EmoteRenderHelper {
-    public static List<RenderEmote> extractEmotes(TextReaderVisitor textReaderVisitor, TextRenderer textRenderer, float renderX, float renderY) {
-        List<RenderEmote> renderEmoteList = new ArrayList<>();
+    public static List<PositionedEmote> extractEmotes(TextReaderVisitor textReaderVisitor, TextRenderer textRenderer, float renderX, float renderY) {
+        List<PositionedEmote> positionedEmotes = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("\u00a8(\\d+)");
+        Pattern pattern = Pattern.compile("\\u00a8(\\d+)");
 
-        outer: while (true) {
+        outer:
+        while (true) {
             String message = textReaderVisitor.getString();
             Matcher matcher = pattern.matcher(message);
 
@@ -41,8 +43,13 @@ public class EmoteRenderHelper {
                     if (emote != null) {
                         float beforeTextWidth = textRenderer.getWidth(message.substring(0, startPos));
 
-                        renderEmoteList.add(new RenderEmote(emote, renderX + beforeTextWidth, renderY));
-                        textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacement(), Style.EMPTY);
+                        if (emote instanceof FetchedEmote fetchedEmote) {
+                            positionedEmotes.add(new PositionedEmote(fetchedEmote, renderX + beforeTextWidth, renderY));
+                        } else {
+                            EmoteRegistry.getInstance().upgradeEmote(emote.getId());
+                        }
+
+                        textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacementText(), Style.EMPTY);
 
                         break;
                     }
@@ -51,11 +58,11 @@ public class EmoteRenderHelper {
             }
         }
 
-        return renderEmoteList;
+        return positionedEmotes;
     }
 
-    public static void drawEmote(MatrixStack matrices, RenderEmote renderEmote, float width, float alpha) {
-        Emote emote = renderEmote.getEmote();
+    public static void drawEmote(MatrixStack matrices, PositionedEmote positionedEmote, float alpha) {
+        FetchedEmote emote = positionedEmote.emote();
 
         RenderSystem.setShaderTexture(0, emote.getTextureIdentifier());
         RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
@@ -63,14 +70,14 @@ public class EmoteRenderHelper {
         int frameNumber = 1;
 
         if (emote.isAnimated()) {
-            frameNumber = (int) ((System.currentTimeMillis() / emote.getFrameTimeMs()) % (long) emote.getFrameCount());
+            frameNumber = (int) ((System.currentTimeMillis() / emote.getFrameTime()) % (long) emote.getFrameCount());
         }
 
         DrawableHelper.drawTexture(
                 matrices,
-                (int) renderEmote.getX(),
-                (int) renderEmote.getY(),
-                (int) width,
+                (int) positionedEmote.x(),
+                (int) positionedEmote.y(),
+                emote.getRenderedWidth(),
                 EmotesMod.EMOTE_HEIGHT,
                 0,
                 emote.getHeight() * frameNumber,
