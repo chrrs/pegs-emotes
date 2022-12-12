@@ -23,6 +23,8 @@ public class EmotesMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        EmoteRegistry.getInstance().repositoryLinks = Config.loadConfigOrCreateDefault().repositories;
+
         reloadKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.pegs-emotes.reload", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F4, "category.pegs-emotes"));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

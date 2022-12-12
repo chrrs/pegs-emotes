@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 public class EmoteRegistry {
     private final Logger LOGGER = LogManager.getLogger("pegs-emotes.emotes.EmoteRegistry");
 
+    public List<String> repositoryLinks = new ArrayList<>();
+
     private static final EmoteRegistry instance = new EmoteRegistry();
 
     private final Set<Identifier> identifiers = new HashSet<>();
@@ -62,12 +64,12 @@ public class EmoteRegistry {
         emotesById.clear();
         repositories.clear();
 
-        try {
-            // TODO: Get this from a config file
-            repositories.add(new EmoteRepository(new URL("https://chrrs.github.io/PegsEmotes/")));
-        } catch (IOException e) {
-            // TODO: Log URL
-            LOGGER.error("failed to fetch from emote repository at ''", e);
+        for (String url : repositoryLinks) {
+            try {
+                repositories.add(new EmoteRepository(new URL(url)));
+            } catch (IOException e) {
+                LOGGER.error("failed to fetch from emote repository at '" + url + "'", e);
+            }
         }
 
         for (EmoteRepository repository : repositories) {
