@@ -26,8 +26,10 @@ public class EmoteRegistry {
     private final Set<Identifier> identifiers = new HashSet<>();
 
     private final List<EmoteRepository> repositories = new ArrayList<>();
-    private final Map<Integer, Emote> emotesById = new HashMap<>();
     private final Map<Identifier, NativeImage> images = new HashMap<>();
+
+    private final Map<Integer, Emote> emotesById = new HashMap<>();
+    private final Map<String, Emote> emotesByName = new HashMap<>();
 
     private EmoteRegistry() {
     }
@@ -43,6 +45,8 @@ public class EmoteRegistry {
     public Emote getEmoteById(int id) {
         return emotesById.get(id);
     }
+
+    public Emote getEmoteByName(String name) { return emotesByName.get(name); }
 
     public NativeImage getEmoteImage(Identifier textureIdentifier) {
         return images.get(textureIdentifier);
@@ -62,6 +66,7 @@ public class EmoteRegistry {
 
     public void reload() {
         emotesById.clear();
+        emotesByName.clear();
         repositories.clear();
 
         for (String url : repositoryLinks) {
@@ -141,5 +146,6 @@ public class EmoteRegistry {
 
     public void addEmote(Emote emote) {
         emotesById.put(emote.getId(), emote);
+        emotesByName.put(emote.getName(), emote);
     }
 }

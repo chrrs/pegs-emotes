@@ -9,26 +9,41 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ChatMessages.class)
 public class ChatMessagesMixin {
+    private static String SPLIT_CHARS = " \t\n,.!?<>[]'\"|{}";
+
     @ModifyVariable(method = "getRenderedChatMessage", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private static String getRenderedChatMessageParam(String message) {
-        for (Emote emote : EmoteRegistry.getInstance().getEmotes()) {
-            String regex = emote.getName();
+        StringBuilder out = new StringBuilder();
 
-            if (Character.isAlphabetic(regex.charAt(0))) {
-                regex = "\\b" + regex;
+        StringBuilder word = new StringBuilder();
+        for (int i = 0; i < message.length(); i++) {
+            char c = message.charAt(i);
+            if (SPLIT_CHARS.indexOf(message.charAt(i)) != -1) {
+                if (!word.isEmpty()) {
+                    Emote emote = EmoteRegistry.getInstance().getEmoteByName(word.toString());
+                    if (emote != null) {
+                        out.append("\u00a8").append(emote.getId());
+                    } else {
+                        out.append(word);
+                    }
+                }
+
+                word = new StringBuilder();
+                out.append(c);
             } else {
-                regex = "\\B" + regex;
+                word.append(c);
             }
-
-            if (Character.isAlphabetic(regex.charAt(regex.length() - 1))) {
-                regex = regex + "\\b";
-            } else {
-                regex = regex + "\\B";
-            }
-
-            message = message.replaceAll(regex, "\u00a8" + emote.getId());
         }
 
-        return message;
+        if (!word.isEmpty()) {
+            Emote emote = EmoteRegistry.getInstance().getEmoteByName(word.toString());
+            if (emote != null) {
+                out.append("\u00a8").append(emote.getId());
+            } else {
+                out.append(word);
+            }
+        }
+
+        return out.toString();
     }
 }
