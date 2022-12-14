@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 public class EmoteRegistry {
     private final Logger LOGGER = LogManager.getLogger("pegs-emotes.emotes.EmoteRegistry");
+    private static int NEXT_ID = 0;
 
     public List<String> repositoryLinks = new ArrayList<>();
 
@@ -46,7 +47,9 @@ public class EmoteRegistry {
         return emotesById.get(id);
     }
 
-    public Emote getEmoteByName(String name) { return emotesByName.get(name); }
+    public Emote getEmoteByName(String name) {
+        return emotesByName.get(name);
+    }
 
     public NativeImage getEmoteImage(Identifier textureIdentifier) {
         return images.get(textureIdentifier);
@@ -60,6 +63,8 @@ public class EmoteRegistry {
 
         identifiers.clear();
         images.clear();
+        emotesById.clear();
+        emotesByName.clear();
 
         LOGGER.info("disposed all emotes!");
     }
@@ -105,7 +110,7 @@ public class EmoteRegistry {
             unfetchedEmote.fetching = true;
 
             if (unfetchedEmote.textureIdentifier == null) {
-                Identifier identifier = new Identifier("pegs-emotes", "emotes/" + id);
+                Identifier identifier = new Identifier("pegs-emotes", "emotes/" + (NEXT_ID++));
                 if (!identifiers.contains(identifier)) {
                     new Thread(() -> {
                         try (InputStream stream = unfetchedEmote.getUrl().openStream()) {
