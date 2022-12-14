@@ -20,7 +20,12 @@ public class EmoteRepository {
     public EmoteRepository(URL baseUrl) throws IOException {
         this.baseUrl = baseUrl;
 
-        URL url = new URL(baseUrl, "emotes.json?_=" + System.currentTimeMillis());
+        String cacheBuster = "";
+        if (baseUrl.getProtocol().startsWith("http")) {
+            cacheBuster = "?_=" + System.currentTimeMillis();
+        }
+
+        URL url = new URL(baseUrl, "emotes.json" + cacheBuster);
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
             Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
