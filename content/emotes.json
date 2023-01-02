@@ -2,6 +2,7 @@
   "static": [
     { "name": ":seal:", "emote_url": "static/seal.png" },
     { "name": ":standing_person:", "emote_url": "static/standing_person.png" },
+    { "name": ":skull:", "emote_url": "static/skull.png"},
     { "name": ":sob:", "emote_url": "static/sob.png" },
     { "name": "5Head", "emote_url": "static/5Head.png" },
     { "name": "Bedge", "emote_url": "static/Bedge.png" },
