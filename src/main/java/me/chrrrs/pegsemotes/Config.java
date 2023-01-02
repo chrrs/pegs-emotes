@@ -21,6 +21,7 @@ public class Config {
 
     public List<String> repositories = new ArrayList<>() {{
         add("https://chrrs.github.io/PegsEmotes/");
+        add("https://fluteds.github.io/PegsEmotes/");
     }};
 
     public static Config loadConfigOrCreateDefault() {
