@@ -13,47 +13,47 @@ import net.minecraft.text.Style;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class EmoteRenderHelper {
     public static List<PositionedEmote> extractEmotes(TextReaderVisitor textReaderVisitor, TextRenderer textRenderer, float renderX, float renderY) {
         List<PositionedEmote> positionedEmotes = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("\\u00a8(\\d+)");
+        String message = textReaderVisitor.getString();
+        int offset = 0;
+        for (int i = 0; i < message.length(); i++) {
+            char c = message.charAt(i);
+            if (c == '\ua950') {
+                int id = 0;
+                int n = 1;
+                while (i + 1 < message.length()) {
+                    char next = message.charAt(i + 1);
+                    if (Character.isDigit(next)) {
+                        id = id * 10 + (next - '0');
 
-        outer:
-        while (true) {
-            String message = textReaderVisitor.getString();
-            Matcher matcher = pattern.matcher(message);
-
-            while (true) {
-                // TODO: This is kinda dirty.
-                if (!matcher.find()) {
-                    break outer;
-                }
-
-                try {
-                    int id = Integer.parseInt(matcher.group(1));
-                    Emote emote = EmoteRegistry.getInstance().getEmoteById(id);
-
-                    int startPos = matcher.start(0);
-                    int endPos = matcher.end(0);
-
-                    if (emote != null) {
-                        float beforeTextWidth = textRenderer.getWidth(message.substring(0, startPos));
-
-                        if (emote instanceof FetchedEmote fetchedEmote) {
-                            positionedEmotes.add(new PositionedEmote(fetchedEmote, renderX + beforeTextWidth, renderY));
-                        } else {
-                            EmoteRegistry.getInstance().upgradeEmote(emote.getId());
-                        }
-
-                        textReaderVisitor.replaceBetween(startPos, endPos, emote.getReplacementText(), Style.EMPTY);
-
+                        i++;
+                        n++;
+                    } else {
                         break;
                     }
-                } catch (NumberFormatException ignored) {
+                }
+
+                Emote emote = EmoteRegistry.getInstance().getEmoteById(id);
+
+                if (emote != null) {
+                    int start = i - n + 1 - offset;
+
+                    float x = textRenderer.getWidth(textReaderVisitor.getString().substring(0, start));
+
+                    if (emote instanceof FetchedEmote fetchedEmote) {
+                        positionedEmotes.add(new PositionedEmote(fetchedEmote, renderX + x, renderY));
+                    } else {
+                        EmoteRegistry.getInstance().upgradeEmote(emote.getId());
+                    }
+
+                    String replacement = emote.getReplacementText();
+                    textReaderVisitor.replaceBetween(start, start + n, replacement, Style.EMPTY);
+
+                    offset += n - replacement.length();
                 }
             }
         }

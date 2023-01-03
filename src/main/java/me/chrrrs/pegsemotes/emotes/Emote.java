@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class Emote {
     private static final Map<String, Integer> ID_MAP = new HashMap<>();
-    private static int NEXT_EMOTE_ID = 0;
+    private static int NEXT_EMOTE_ID = 1;
 
     public abstract int getId();
 
