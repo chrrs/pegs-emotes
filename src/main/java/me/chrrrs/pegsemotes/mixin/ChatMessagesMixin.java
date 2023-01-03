@@ -22,7 +22,7 @@ public class ChatMessagesMixin {
                 if (!word.isEmpty()) {
                     Emote emote = EmoteRegistry.getInstance().getEmoteByName(word.toString());
                     if (emote != null) {
-                        out.append("\u00a8").append(emote.getId());
+                        out.append("\ua950").append(emote.getId());
                     } else {
                         out.append(word);
                     }
@@ -38,7 +38,7 @@ public class ChatMessagesMixin {
         if (!word.isEmpty()) {
             Emote emote = EmoteRegistry.getInstance().getEmoteByName(word.toString());
             if (emote != null) {
-                out.append("\u00a8").append(emote.getId());
+                out.append("\ua950").append(emote.getId());
             } else {
                 out.append(word);
             }
