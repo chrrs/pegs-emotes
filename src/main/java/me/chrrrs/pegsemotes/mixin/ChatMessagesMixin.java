@@ -44,6 +44,6 @@ public class ChatMessagesMixin {
             }
         }
 
-        return out.toString();
+        return out.toString().replaceAll("\uD83E\uDDAD", ":seal:");
     }
 }
