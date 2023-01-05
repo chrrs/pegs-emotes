@@ -87,7 +87,7 @@
     { "name": "peepoRun", "emote_url": "animated/peepoRun.png", "frame_time": 40 },
     { "name": "peepoShy", "emote_url": "animated/peepoShy.png", "frame_time": 250 },
     { "name": "peepoTalk", "emote_url": "animated/peepoTalk.png", "frame_time": 100 },
-    { "name": "peepoLeave", "emote_url": "animated/peepoLeave.png", "frame_time": 100 },
+    { "name": "peepoLeave", "emote_url": "animated/peepoleave.png", "frame_time": 100 },
     { "name": "PepeLaugh", "emote_url": "animated/PepeLaugh.png", "frame_time": 20 },
     { "name": "pepeMeltdown", "emote_url": "animated/pepeMeltdown.png", "frame_time": 30 },
     { "name": "peepoWow", "emote_url": "animated/peepoWow.png", "frame_time": 100 },
