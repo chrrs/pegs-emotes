@@ -52,6 +52,7 @@
     { "name": "Awkward", "emote_url": "animated/Awkward.png", "frame_time": 100 },
     { "name": "AYOOO", "emote_url": "animated/AYOOO.png", "frame_time": 20 },
     { "name": "BlanketJam", "emote_url": "animated/BlanketJam.png", "frame_time": 40 },
+    { "name": "BoneZone", "emote_url": "animated/BoneZone.png", "frame_time": 40 },
     { "name": "catJAM", "emote_url": "animated/catJAM.png", "frame_time": 40 },
     { "name": "catJAMJAM", "emote_url": "animated/catJAMJAM.png", "frame_time": 20 },
     { "name": "catKISS", "emote_url": "animated/catKISS.png", "frame_time": 70 },
