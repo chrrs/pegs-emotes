@@ -94,11 +94,14 @@
     { "name": "peepoWow", "emote_url": "animated/peepoWow.png", "frame_time": 100 },
     { "name": "ppOverheat", "emote_url": "animated/ppOverheat.png", "frame_time": 20 },
     { "name": "ppPoof", "emote_url": "animated/ppPoof.png", "frame_time": 30 },
+    { "name": "ranbooLMAOO", "emote_url": "animated/ranbooLMAOO.png", "frame_time": 60 },
     { "name": "TeaTime", "emote_url": "animated/TeaTime.png", "frame_time": 120 },
     { "name": "ThisIsFine", "emote_url": "animated/ThisIsFine.png", "frame_time": 100 },
     { "name": "trevorHug", "emote_url": "animated/trevorHug.png", "frame_time": 100 },
+    { "name": "tubboSpin", "emote_url": "animated/tubboSpin.png", "frame_time": 100 },
     { "name": "VIBE", "emote_url": "animated/VIBE.png", "frame_time": 40 },
     { "name": "WAYTOODANK", "emote_url": "animated/WAYTOODANK.png", "frame_time": 20 },
+    { "name": "wilburPls", "emote_url": "animated/wilburPls.png", "frame_time": 30 },
     { "name": "YesYes", "emote_url": "animated/YesYes.png", "frame_time": 100 },
     { "name": "YIPPEE", "emote_url": "animated/YIPPEE.png", "frame_time": 50 }
   ]
