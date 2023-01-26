@@ -45,6 +45,8 @@
     { "name": "Sadge", "emote_url": "static/Sadge.png" },
     { "name": "SealTheDeal", "emote_url": "static/SealTheDeal.png" },
     { "name": "Stare", "emote_url": "static/Stare.png" },
+    { "name": "TrollDespair", "emote_url": "static/TrollDespair.png" },
+    { "name": "TrollFace", "emote_url": "static/TrollFace.png" },
     { "name": "widepeepoHappy", "emote_url": "static/widepeepoHappy.png" },
     { "name": "WICKED", "emote_url": "static/WICKED.png" },
     { "name": "YEP", "emote_url": "static/YEP.png" }
@@ -86,6 +88,7 @@
     { "name": "peepoArrive", "emote_url": "animated/peepoArrive.png", "frame_time": 100 },
     { "name": "peepoComfy", "emote_url": "animated/peepoComfy.png", "frame_time": 100 },
     { "name": "PeepoGiggles", "emote_url": "animated/PeepoGiggles.png", "frame_time": 30 },
+    { "name": "peepoHey", "emote_url": "animated/peepoHey.png", "frame_time": 100 },
     { "name": "peepoRiot", "emote_url": "animated/peepoRiot.png", "frame_time": 100 },
     { "name": "peepoRun", "emote_url": "animated/peepoRun.png", "frame_time": 40 },
     { "name": "peepoShy", "emote_url": "animated/peepoShy.png", "frame_time": 250 },
