@@ -9,6 +9,7 @@
     { "name": "CatPat", "emote_url": "static/CatPat.png"},
     { "name": "chrrzSit", "emote_url": "static/chrrzSit.png"},
     { "name": "Clueless", "emote_url": "static/Clueless.png" },
+    { "name": "D:", "emote_url": "static/DColon.png" },
     { "name": "EZ", "emote_url": "static/EZ.png" },
     { "name": "FeelsDankMan", "emote_url": "static/FeelsDankMan.png" },
     { "name": "Gayge", "emote_url": "static/Gayge.png"},
