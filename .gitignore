@@ -5,3 +5,6 @@ run
 bin/
 *.jar
 .vscode
+*.ps1
+*.lnk
+*.py
