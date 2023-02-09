@@ -32,6 +32,7 @@ After this, add new lines to the `content/emotes.json` file to add new emotes. M
 `static` or `animated` subdirectories in the `content` folder.
 
 Adding animated emotes is a bit different:
+
 1. Use [this site](https://sheeptester.github.io/words-go-here/misc/animated-painting-maker.html) to convert a gif into
    an image with all the frames.
 2. Get the frame time from [this site](https://ezgif.com/maker) by multiplying the delay by 10
