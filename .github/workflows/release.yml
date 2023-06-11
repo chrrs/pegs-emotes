@@ -6,7 +6,7 @@ on:
       - '*'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   release:
@@ -20,17 +20,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
 
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        run: ./gradlew build
 
       - name: Upload JAR files to latest release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/libs/*!(-sources).jar
+          file: build/libs/*.jar
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
