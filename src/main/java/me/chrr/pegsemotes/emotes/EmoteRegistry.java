@@ -1,6 +1,6 @@
-package me.chrrrs.pegsemotes.emotes;
+package me.chrr.pegsemotes.emotes;
 
-import me.chrrrs.pegsemotes.emotes.remote.EmoteRepository;
+import me.chrr.pegsemotes.emotes.remote.EmoteRepository;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;

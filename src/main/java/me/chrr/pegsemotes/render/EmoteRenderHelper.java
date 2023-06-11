@@ -1,11 +1,11 @@
-package me.chrrrs.pegsemotes.render;
+package me.chrr.pegsemotes.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.chrrrs.pegsemotes.EmotesMod;
-import me.chrrrs.pegsemotes.emotes.Emote;
-import me.chrrrs.pegsemotes.emotes.EmoteRegistry;
-import me.chrrrs.pegsemotes.emotes.FetchedEmote;
-import me.chrrrs.pegsemotes.text.TextReaderVisitor;
+import me.chrr.pegsemotes.EmotesMod;
+import me.chrr.pegsemotes.emotes.Emote;
+import me.chrr.pegsemotes.emotes.FetchedEmote;
+import me.chrr.pegsemotes.emotes.EmoteRegistry;
+import me.chrr.pegsemotes.text.TextReaderVisitor;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;

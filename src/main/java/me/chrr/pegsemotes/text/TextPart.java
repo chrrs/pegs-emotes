@@ -1,4 +1,4 @@
-package me.chrrrs.pegsemotes.text;
+package me.chrr.pegsemotes.text;
 
 import net.minecraft.text.Style;
 

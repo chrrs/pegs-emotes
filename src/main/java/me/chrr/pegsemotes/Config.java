@@ -1,4 +1,4 @@
-package me.chrrrs.pegsemotes;
+package me.chrr.pegsemotes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

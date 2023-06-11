@@ -1,4 +1,4 @@
-package me.chrrrs.pegsemotes.emotes.remote;
+package me.chrr.pegsemotes.emotes.remote;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;

@@ -1,4 +1,4 @@
-package me.chrrrs.pegsemotes.emotes;
+package me.chrr.pegsemotes.emotes;
 
 import net.minecraft.util.Identifier;
 

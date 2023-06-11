@@ -1,8 +1,8 @@
-package me.chrrrs.pegsemotes.mixin;
+package me.chrr.pegsemotes.mixin;
 
-import me.chrrrs.pegsemotes.render.EmoteRenderHelper;
-import me.chrrrs.pegsemotes.render.PositionedEmote;
-import me.chrrrs.pegsemotes.text.TextReaderVisitor;
+import me.chrr.pegsemotes.render.EmoteRenderHelper;
+import me.chrr.pegsemotes.render.PositionedEmote;
+import me.chrr.pegsemotes.text.TextReaderVisitor;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.util.math.MatrixStack;

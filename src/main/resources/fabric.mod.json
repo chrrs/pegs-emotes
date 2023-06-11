@@ -20,7 +20,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.chrrrs.pegsemotes.EmotesMod"
+      "me.chrr.pegsemotes.EmotesMod"
     ]
   },
   "mixins": [

@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.chrrrs.pegsemotes.mixin",
+  "package": "me.chrr.pegsemotes.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
   ],

@@ -1,6 +1,6 @@
-package me.chrrrs.pegsemotes.mixin;
+package me.chrr.pegsemotes.mixin;
 
-import me.chrrrs.pegsemotes.emotes.EmoteRegistry;
+import me.chrr.pegsemotes.emotes.EmoteRegistry;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
