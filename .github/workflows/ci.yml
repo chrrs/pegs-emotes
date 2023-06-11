@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,9 +26,7 @@ jobs:
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
-      with:
-        arguments: remapJar
-    
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
