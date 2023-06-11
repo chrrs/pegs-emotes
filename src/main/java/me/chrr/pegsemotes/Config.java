@@ -3,6 +3,7 @@ package me.chrr.pegsemotes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.util.Util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,5 +47,9 @@ public class Config {
             LOGGER.error("failed to load config", e);
             return new Config();
         }
+    }
+
+    public static void openConfig() {
+        Util.getOperatingSystem().open(new File(FabricLoader.getInstance().getConfigDir().toFile(), "pegs-emotes.json"));
     }
 }

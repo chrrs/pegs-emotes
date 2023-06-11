@@ -21,6 +21,9 @@
   "entrypoints": {
     "client": [
       "me.chrr.pegsemotes.EmotesMod"
+    ],
+    "modmenu": [
+      "me.chrr.pegsemotes.EmotesModMenu"
     ]
   },
   "mixins": [
