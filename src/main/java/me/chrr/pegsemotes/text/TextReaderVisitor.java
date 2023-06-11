@@ -33,8 +33,8 @@ public class TextReaderVisitor implements CharacterVisitor {
      * @param endIndex   – the ending index, exclusive
      */
     public void deleteBetween(int beginIndex, int endIndex) {
-        for (int i = endIndex - 1; i >= beginIndex; i--) {
-            textParts.remove(i);
+        if (endIndex > beginIndex) {
+            textParts.subList(beginIndex, endIndex).clear();
         }
     }
 

@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class ChatMessagesMixin {
     private static final String SPLIT_CHARS = " \t\n,.!?<>[]'\"|{}();=";
 
+    @SuppressWarnings("UnnecessaryUnicodeEscape")
     @ModifyVariable(method = "getRenderedChatMessage", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private static String getRenderedChatMessageParam(String message) {
         StringBuilder out = new StringBuilder();

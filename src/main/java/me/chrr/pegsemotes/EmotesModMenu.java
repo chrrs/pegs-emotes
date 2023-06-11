@@ -12,6 +12,7 @@ public class EmotesModMenu implements ModMenuApi {
             @Override
             protected void init() {
                 Config.openConfig();
+                assert this.client != null;
                 this.client.setScreen(screen);
             }
         };

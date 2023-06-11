@@ -30,7 +30,10 @@ public class EmotesMod implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (reloadKeyBinding.wasPressed()) {
                 EmoteRegistry.getInstance().reload();
-                client.player.sendMessage(Text.literal("Emotes reloaded!").setStyle(Style.EMPTY.withFormatting(Formatting.GRAY)), false);
+
+                if (client.player != null) {
+                    client.player.sendMessage(Text.literal("Emotes reloaded!").setStyle(Style.EMPTY.withFormatting(Formatting.GRAY)), false);
+                }
             }
         });
 

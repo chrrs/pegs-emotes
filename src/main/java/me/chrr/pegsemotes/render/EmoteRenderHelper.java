@@ -14,6 +14,7 @@ import net.minecraft.text.Style;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnnecessaryUnicodeEscape")
 public class EmoteRenderHelper {
     public static List<PositionedEmote> extractEmotes(TextReaderVisitor textReaderVisitor, TextRenderer textRenderer, float renderX, float renderY) {
         List<PositionedEmote> positionedEmotes = new ArrayList<>();
