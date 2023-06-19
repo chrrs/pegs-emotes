@@ -1,7 +1,7 @@
 package me.chrr.pegsemotes.mixin;
 
-import me.chrr.pegsemotes.emotes.Emote;
-import me.chrr.pegsemotes.emotes.EmoteRegistry;
+import me.chrr.pegsemotes.emote.Emote;
+import me.chrr.pegsemotes.emote.EmoteRegistry;
 import net.minecraft.client.network.ClientCommandSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
