@@ -1,37 +1,37 @@
 {
-  "schemaVersion": 1,
-  "id": "pegs-emotes",
-  "version": "${version}",
-  "name": "PEGS Emotes",
-  "description": "PEGS Twitch emotes for Minecraft chat.",
-  "issues": "https://github.com/chrrs/PegsEmotes/issues",
-  "authors": [
-    "AlgidSpace",
-    "chrrrs",
-    "fluteds"
-  ],
-  "contact": {
-    "sources": "https://github.com/chrrs/PegsEmotes",
-    "issues": "https://github.com/chrrs/PegsEmotes/issues"
-  },
-  "license": "MIT",
-  "icon": "assets/pegs-emotes/icon.png",
-  "environment": "client",
-  "entrypoints": {
-    "client": [
-      "me.chrr.pegsemotes.EmoteMod"
+    "schemaVersion": 1,
+    "id": "pegs-emotes",
+    "version": "${version}",
+    "name": "PEGS Emotes",
+    "description": "PEGS Twitch emotes for Minecraft chat.",
+    "issues": "https://github.com/chrrs/PegsEmotes/issues",
+    "authors": [
+        "AlgidSpace",
+        "chrrrs",
+        "fluteds"
     ],
-    "modmenu": [
-      "me.chrr.pegsemotes.EmoteModMenu"
-    ]
-  },
-  "mixins": [
-    "pegsemotes.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.14.10",
-    "fabric": "*",
-    "minecraft": "1.19.x",
-    "java": ">=17"
-  }
+    "contact": {
+        "sources": "https://github.com/chrrs/PegsEmotes",
+        "issues": "https://github.com/chrrs/PegsEmotes/issues"
+    },
+    "license": "MIT",
+    "icon": "assets/pegs-emotes/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "me.chrr.pegsemotes.EmoteMod"
+        ],
+        "modmenu": [
+            "me.chrr.pegsemotes.EmoteModMenu"
+        ]
+    },
+    "mixins": [
+        "pegsemotes.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.10",
+        "fabric": "*",
+        "minecraft": "1.19.x",
+        "java": ">=17"
+    }
 }
