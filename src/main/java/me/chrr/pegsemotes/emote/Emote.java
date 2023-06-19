@@ -1,14 +1,25 @@
 package me.chrr.pegsemotes.emote;
 
+import me.chrr.pegsemotes.emote.source.EmoteSource;
+
 public class Emote {
     private final int id;
     private final String name;
-    private final boolean animated;
 
-    public Emote(String name, boolean animated) {
+    private EmoteSource emoteSource;
+
+    public Emote(String name, EmoteSource emoteSource) {
         this.name = name;
-        this.animated = animated;
         this.id = name.hashCode();
+        this.emoteSource = emoteSource;
+    }
+
+    public EmoteSource getEmoteSource() {
+        return emoteSource;
+    }
+
+    public void setEmoteSource(EmoteSource emoteSource) {
+        this.emoteSource = emoteSource;
     }
 
     public int getId() {
@@ -17,9 +28,5 @@ public class Emote {
 
     public String getName() {
         return name;
-    }
-
-    public boolean isAnimated() {
-        return animated;
     }
 }

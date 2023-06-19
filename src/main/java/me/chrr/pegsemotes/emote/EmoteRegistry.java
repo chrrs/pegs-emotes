@@ -11,9 +11,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class EmoteRegistry {
-    private static final Logger LOGGER = LogManager.getLogger("pegs-emotes.ConfigManager");
+    private static final Logger LOGGER = LogManager.getLogger("pegs-emotes.EmoteRegistry");
     private static final EmoteRegistry INSTANCE = new EmoteRegistry();
 
+    private final EmoteFetcher emoteFetcher = new EmoteFetcher();
     private List<EmoteRepository> repositories = List.of();
 
     private Map<String, Emote> emotesByName = Map.of();
@@ -47,8 +48,11 @@ public class EmoteRegistry {
         }
     }
 
-    public void disposeCache() {
-        // TODO: Dispose image cache.
+    /**
+     * Ideally, this should be called from the render thread.
+     */
+    public void clearCache() {
+        emoteFetcher.clearCache();
     }
 
     public void refetchEmotes() {
@@ -68,5 +72,12 @@ public class EmoteRegistry {
 
         LOGGER.info("emotes: " + getEmotes().stream().map(Emote::getName).collect(Collectors.joining(", ")));
         LOGGER.info("refetched all emotes");
+    }
+
+    /**
+     * This should only be called from the render thread!
+     */
+    public void ensureEmote(Emote emote) {
+        emoteFetcher.tryFetch(emote);
     }
 }
