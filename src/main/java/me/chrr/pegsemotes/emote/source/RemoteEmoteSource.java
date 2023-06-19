@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 public class RemoteEmoteSource implements EmoteSource {
     public final RemoteEmote remoteEmote;
 
-    public Identifier identifier;
+    public Identifier textureIdentifier;
     public State state = State.UNFETCHED;
 
     public RemoteEmoteSource(RemoteEmote remoteEmote) {

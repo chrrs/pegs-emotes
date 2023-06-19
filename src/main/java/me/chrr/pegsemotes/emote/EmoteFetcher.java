@@ -47,7 +47,7 @@ public class EmoteFetcher {
             if (remoteSource.state == RemoteEmoteSource.State.UNFETCHED) {
                 Identifier identifier = new Identifier("pegs-emotes", "emotes/" + emote.getId() + "/" + ITERATION);
                 if (identifiers.contains(identifier)) {
-                    remoteSource.identifier = identifier;
+                    remoteSource.textureIdentifier = identifier;
                     upgradeEmote(emote, remoteSource);
                     return;
                 }
@@ -56,7 +56,7 @@ public class EmoteFetcher {
                 new Thread(() -> fetchEmoteImage(emote, identifier, remoteSource), "Emote fetcher").start();
             } else if (remoteSource.state == RemoteEmoteSource.State.FETCHED) {
                 TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
-                textureManager.registerTexture(remoteSource.identifier, new NativeImageBackedTexture(images.get(remoteSource.identifier)));
+                textureManager.registerTexture(remoteSource.textureIdentifier, new NativeImageBackedTexture(images.get(remoteSource.textureIdentifier)));
 
                 upgradeEmote(emote, remoteSource);
                 LOGGER.debug("upgraded emote '" + emote.getName() + "'");
@@ -70,7 +70,7 @@ public class EmoteFetcher {
             identifiers.add(identifier);
             images.put(identifier, image);
 
-            remoteSource.identifier = identifier;
+            remoteSource.textureIdentifier = identifier;
             remoteSource.state = RemoteEmoteSource.State.FETCHED;
 
             LOGGER.debug("fetched image for emote '" + emote.getName() + "'");
@@ -82,9 +82,9 @@ public class EmoteFetcher {
 
     private void upgradeEmote(Emote emote, RemoteEmoteSource remoteSource) {
         if (remoteSource.remoteEmote instanceof RemoteEmote.Static) {
-            emote.setEmoteSource(new LocalStaticEmoteSource(remoteSource.identifier, images.get(remoteSource.identifier)));
+            emote.setEmoteSource(new LocalStaticEmoteSource(remoteSource.textureIdentifier, images.get(remoteSource.textureIdentifier)));
         } else if (remoteSource.remoteEmote instanceof RemoteEmote.Animated animatedEmote) {
-            emote.setEmoteSource(new LocalAnimatedEmoteSource(remoteSource.identifier, images.get(remoteSource.identifier), animatedEmote.frameTime));
+            emote.setEmoteSource(new LocalAnimatedEmoteSource(remoteSource.textureIdentifier, images.get(remoteSource.textureIdentifier), animatedEmote.frameTime));
         } else {
             LOGGER.error("unknown emote source for emote '" + emote.getName() + "'");
             remoteSource.state = RemoteEmoteSource.State.ERRORED;
