@@ -3,6 +3,8 @@ name: Deploy content
 on:
   push:
     branches: ["main"]
+    paths:
+      - "content/**"
 
   workflow_dispatch:
 
@@ -24,12 +26,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: 'content'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
