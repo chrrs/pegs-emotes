@@ -62,8 +62,8 @@ public class EmoteRegistry {
         for (EmoteRepository repository : repositories) {
             try {
                 for (Emote emote : repository.fetchEmotes()) {
-                    emotesByName.put(emote.getName(), emote);
-                    emotesById.put(emote.getId(), emote);
+                    emotesByName.putIfAbsent(emote.getName(), emote);
+                    emotesById.putIfAbsent(emote.getId(), emote);
                 }
             } catch (IOException e) {
                 LOGGER.error("failed to fetch emotes from '" + repository.baseUrl() + "'", e);
