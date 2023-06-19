@@ -47,6 +47,10 @@ public class EmoteRegistry {
         }
     }
 
+    public void disposeCache() {
+        // TODO: Dispose image cache.
+    }
+
     public void refetchEmotes() {
         emotesByName = new HashMap<>();
         emotesById = new HashMap<>();
