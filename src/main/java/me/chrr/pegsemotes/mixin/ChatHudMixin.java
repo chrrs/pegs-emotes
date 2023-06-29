@@ -4,8 +4,8 @@ import me.chrr.pegsemotes.emote.EmoteRegistry;
 import me.chrr.pegsemotes.util.TextEmoteReplacer;
 import me.chrr.pegsemotes.util.TextReaderVisitor;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.ChatHud;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.OrderedText;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,8 +15,8 @@ import java.util.List;
 
 @Mixin(ChatHud.class)
 public abstract class ChatHudMixin {
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/OrderedText;FFI)I"))
-    private int drawWithShadow(TextRenderer textRenderer, MatrixStack matrices, OrderedText text, float x, float y, int color) {
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)I"))
+    private int drawWithShadow(DrawContext instance, TextRenderer textRenderer, OrderedText text, int x, int y, int color) {
         TextReaderVisitor textReaderVisitor = new TextReaderVisitor();
         text.accept(textReaderVisitor);
 
@@ -24,13 +24,13 @@ public abstract class ChatHudMixin {
 
         List<TextEmoteReplacer.PositionedEmote> emotes = TextEmoteReplacer.replaceEmotes(textReaderVisitor, textRenderer, x, y);
 
-        matrices.translate(0, -0.5f, 0);
+        instance.getMatrices().translate(0, -0.5f, 0);
         for (TextEmoteReplacer.PositionedEmote positionedEmote : emotes) {
             EmoteRegistry.getInstance().ensureEmote(positionedEmote.emote());
-            positionedEmote.emote().getEmoteSource().draw(matrices, positionedEmote.x(), positionedEmote.y(), emoteAlpha);
+            positionedEmote.emote().getEmoteSource().draw(instance, positionedEmote.x(), positionedEmote.y(), emoteAlpha);
         }
-        matrices.translate(0, 0.5, 0);
+        instance.getMatrices().translate(0, 0.5f, 0);
 
-        return textRenderer.draw(matrices, textReaderVisitor.getOrderedText(), x, y, color);
+        return instance.drawTextWithShadow(textRenderer, textReaderVisitor.getOrderedText(), x, y, color);
     }
 }

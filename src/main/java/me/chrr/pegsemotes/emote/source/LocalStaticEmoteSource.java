@@ -2,9 +2,8 @@ package me.chrr.pegsemotes.emote.source;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.chrr.pegsemotes.EmoteMod;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 public class LocalStaticEmoteSource implements EmoteSource {
@@ -31,13 +30,12 @@ public class LocalStaticEmoteSource implements EmoteSource {
     }
 
     @Override
-    public void draw(MatrixStack matrices, float x, float y, float alpha) {
+    public void draw(DrawContext context, float x, float y, float alpha) {
         RenderSystem.enableBlend();
-        RenderSystem.setShaderTexture(0, identifier);
         RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
 
-        DrawableHelper.drawTexture(
-                matrices,
+        context.drawTexture(
+                identifier,
                 (int) x,
                 (int) y,
                 getRenderedWidth(),

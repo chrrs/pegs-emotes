@@ -1,7 +1,7 @@
 package me.chrr.pegsemotes.emote.source;
 
 import me.chrr.pegsemotes.EmoteMod;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Identifier;
 
 public class RemoteEmoteSource implements EmoteSource {
@@ -27,7 +27,7 @@ public class RemoteEmoteSource implements EmoteSource {
     }
 
     @Override
-    public void draw(MatrixStack matrices, float x, float y, float alpha) {
+    public void draw(DrawContext context, float x, float y, float alpha) {
         // We don't draw anything for remote emotes.
     }
 
