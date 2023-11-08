@@ -20,11 +20,6 @@ public class LocalStaticEmoteSource implements EmoteSource {
     }
 
     @Override
-    public boolean isAnimated() {
-        return false;
-    }
-
-    @Override
     public int getRenderedWidth() {
         return (int) ((double) width / ((double) height / (float) EmoteMod.EMOTE_HEIGHT));
     }
@@ -48,6 +43,7 @@ public class LocalStaticEmoteSource implements EmoteSource {
                 height
         );
 
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.disableBlend();
     }
 }

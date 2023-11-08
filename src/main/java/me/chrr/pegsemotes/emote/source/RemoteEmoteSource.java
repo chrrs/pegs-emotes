@@ -15,11 +15,6 @@ public class RemoteEmoteSource implements EmoteSource {
     }
 
     @Override
-    public boolean isAnimated() {
-        return remoteEmote instanceof RemoteEmote.Animated;
-    }
-
-    @Override
     public int getRenderedWidth() {
         // As most emotes are square, we predict the width being the same as height.
         //noinspection SuspiciousNameCombination
