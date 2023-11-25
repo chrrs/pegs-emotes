@@ -6,7 +6,6 @@ import me.chrr.pegsemotes.emote.EmoteRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
@@ -34,9 +33,6 @@ public class EmoteMod implements ClientModInitializer {
     public void onInitializeClient() {
         config = ConfigManager.read(getConfigFile());
         EmoteRegistry.getInstance().loadRepositoriesFromConfig(config);
-
-        ClientPlayConnectionEvents.INIT.register((handler, client) ->
-                EmoteRegistry.getInstance().refetchEmotes());
 
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(
                 new SimpleSynchronousResourceReloadListener() {
