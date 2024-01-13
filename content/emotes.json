@@ -144,7 +144,7 @@
     { "name": "peepoBye", "emote_url": "animated/peepoBye.png", "frame_time": 100 },
     { "name": "peepoTrip", "emote_url": "animated/peepoTrip.png", "frame_time": 50 },
     { "name": "PeepoYeet", "emote_url": "animated/PeepoYeet.png", "frame_time": 70 },
-    { "name": "pepeBASS", "emote_url": "animated/pepeBass.png", "frame_time": 20 },
+    { "name": "pepeBASS", "emote_url": "animated/pepeBASS.png", "frame_time": 20 },
     { "name": "pepeSadJam", "emote_url": "animated/pepeSadJam.png", "frame_time": 70 },
     { "name": "RIPBOZO", "emote_url": "animated/RIPBOZO.png", "frame_time": 60 },
     { "name": "SMHing", "emote_url": "animated/SMHing.png", "frame_time": 100 },
