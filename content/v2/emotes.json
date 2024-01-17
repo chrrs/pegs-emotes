@@ -1,0 +1,17 @@
+{
+    "lastUpdated": "2024-01-16T22:20:12Z",
+    "emotes": [
+        {
+            "name": "OMEGALUL",
+            "format": "png",
+            "url": "https://cdn.betterttv.net/emote/583089f4737a8e61abb0186b/3x.png",
+            "sha1": "b366b008a9c7ad69f04d7dc27de3da9f7a99f493"
+        },
+        {
+            "name": "catKISS",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/5f455410b2efd65d77e8cb14/3x.gif",
+            "sha1": "b0b860eb1632e034f9ca41bb69266d3a13f11e11"
+        }
+    ]
+}
