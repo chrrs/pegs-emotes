@@ -6,9 +6,8 @@
     "mixins": [
     ],
     "client": [
-        "ChatHudMixin",
-        "ChatMessagesMixin",
-        "ClientCommandSourceMixin"
+        "FontManagerMixin",
+        "TextRendererDrawerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
