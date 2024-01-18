@@ -1,5 +1,6 @@
 package me.chrr.pegsemotes.mixin;
 
+import me.chrr.pegsemotes.EmoteMod;
 import me.chrr.pegsemotes.font.EmoteFontStorage;
 import net.minecraft.client.font.FontManager;
 import net.minecraft.client.font.FontStorage;
@@ -26,7 +27,6 @@ public abstract class FontManagerMixin {
 
     @Inject(method = "reload(Lnet/minecraft/client/font/FontManager$ProviderIndex;Lnet/minecraft/util/profiler/Profiler;)V", at = @At("TAIL"))
     public void injectEmoteFontStorage(CallbackInfo ci) {
-        Identifier id = Identifier.of("pegs-emotes", "font/emotes");
-        fontStorages.put(id, new EmoteFontStorage(textureManager, id));
+        fontStorages.put(EmoteMod.EMOTE_FONT, new EmoteFontStorage(textureManager, EmoteMod.EMOTE_FONT));
     }
 }

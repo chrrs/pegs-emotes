@@ -27,7 +27,7 @@ public class EmoteFetcher {
                 if (cachedImage.isFile()) {
                     try {
                         return readEmote(apiEmote.format, new FileInputStream(cachedImage));
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         LOGGER.error("could not read " + apiEmote.name + " from local cache", e);
                     }
                 }
@@ -50,8 +50,8 @@ public class EmoteFetcher {
                 }
 
                 return readEmote(apiEmote.format, new ByteArrayInputStream(bytes));
-            } catch (IOException | IllegalStateException e) {
-                LOGGER.error("failed to fetch " + apiEmote, e);
+            } catch (Exception e) {
+                LOGGER.error("failed to fetch " + apiEmote.name, e);
                 throw e;
             }
         });

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(TextRenderer.Drawer.class)
 public abstract class TextRendererDrawerMixin {
     @Redirect(method = "accept", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;drawGlyph(Lnet/minecraft/client/font/GlyphRenderer;ZZFFFLorg/joml/Matrix4f;Lnet/minecraft/client/render/VertexConsumer;FFFFI)V"))
-    private void drawGlyph(TextRenderer textRenderer, GlyphRenderer glyphRenderer, boolean bold, boolean italic, float weight, float x, float y, Matrix4f matrix, VertexConsumer vertexConsumer, float red, float green, float blue, float alpha, int light, @Local Glyph glyph) {
+    public void drawGlyph(TextRenderer textRenderer, GlyphRenderer glyphRenderer, boolean bold, boolean italic, float weight, float x, float y, Matrix4f matrix, VertexConsumer vertexConsumer, float red, float green, float blue, float alpha, int light, @Local Glyph glyph) {
         if (glyph instanceof ImageGlyph imageGlyph) {
             float scale = (float) imageGlyph.getWidth() / 8f;
             matrix.scale(1f / scale);
