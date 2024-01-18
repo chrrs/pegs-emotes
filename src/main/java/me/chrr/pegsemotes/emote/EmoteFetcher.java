@@ -1,6 +1,8 @@
 package me.chrr.pegsemotes.emote;
 
 import me.chrr.pegsemotes.EmoteMod;
+import me.chrr.pegsemotes.util.GifDecoder;
+import me.chrr.pegsemotes.util.ImageUtil;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.texture.NativeImage;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -41,9 +43,12 @@ public class EmoteFetcher {
                     throw new IllegalStateException("SHA1 of fetched image does not match");
                 }
 
-                if ((!cachedImage.isFile() || cachedImage.delete())
-                        && cachedImage.getParentFile().mkdirs()
-                        && cachedImage.createNewFile()) {
+                if (!cachedImage.isFile()) {
+                    //noinspection ResultOfMethodCallIgnored
+                    cachedImage.getParentFile().mkdirs();
+                    //noinspection ResultOfMethodCallIgnored
+                    cachedImage.createNewFile();
+
                     try (FileOutputStream outputStream = new FileOutputStream(cachedImage)) {
                         outputStream.write(bytes);
                     }
@@ -60,7 +65,29 @@ public class EmoteFetcher {
     private Emote readEmote(String format, InputStream inputStream) throws IOException {
         if (format.equals("png")) {
             NativeImage image = NativeImage.read(inputStream);
+            if (image.getWidth() > 256 || image.getHeight() > 256) {
+                throw new IOException("emote image should be max. 256x256");
+            }
+
             return new Emote.Static(image);
+        } else if (format.equals("gif")) {
+            GifDecoder decoder = new GifDecoder();
+
+            if (decoder.read(inputStream) != 0) {
+                throw new IOException("failed to decode GIF file");
+            }
+
+            if (decoder.getImage().getWidth() > 256 || decoder.getImage().getHeight() > 256) {
+                throw new IOException("emote image should be max. 256x256");
+            }
+
+            Emote.Animated.Frame[] frames = new Emote.Animated.Frame[decoder.getFrameCount()];
+            for (int i = 0; i < decoder.getFrameCount(); i++) {
+                NativeImage image = ImageUtil.fromBufferedImage(decoder.getFrame(i));
+                frames[i] = new Emote.Animated.Frame(image, decoder.getDelay(i));
+            }
+
+            return new Emote.Animated(frames);
         } else {
             throw new UnsupportedOperationException(format + " format is not supported");
         }

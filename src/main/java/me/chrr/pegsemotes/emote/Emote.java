@@ -5,6 +5,7 @@ import net.minecraft.client.font.Glyph;
 import net.minecraft.client.texture.NativeImage;
 
 import java.time.Instant;
+import java.util.Arrays;
 
 public abstract class Emote {
     public abstract Glyph getFrame(Instant instant);
@@ -19,6 +20,41 @@ public abstract class Emote {
         @Override
         public ImageGlyph getFrame(Instant instant) {
             return glyph;
+        }
+    }
+
+    public static class Animated extends Emote {
+        private final Frame[] frames;
+        private final int loopTimeMs;
+
+        public Animated(Frame[] frames) {
+            this.frames = frames;
+            this.loopTimeMs = Arrays.stream(frames).mapToInt(frame -> frame.delayMs).sum();
+        }
+
+        @Override
+        public Glyph getFrame(Instant instant) {
+            int localTime = (int) (instant.toEpochMilli() % loopTimeMs);
+
+            int cumulativeTime = 0;
+            for (Frame frame : frames) {
+                cumulativeTime += frame.delayMs;
+                if (cumulativeTime > localTime) {
+                    return frame.glyph;
+                }
+            }
+
+            return frames[0].glyph;
+        }
+
+        public static class Frame {
+            private final ImageGlyph glyph;
+            private final int delayMs;
+
+            public Frame(NativeImage image, int delayMs) {
+                this.glyph = new ImageGlyph(image);
+                this.delayMs = delayMs;
+            }
         }
     }
 }
