@@ -16,9 +16,7 @@ public class RepositoryManager {
 
     private static final RepositoryManager INSTANCE = new RepositoryManager();
 
-    public static final String[] TEMP_REPOSITORIES = new String[]{
-            "file:///D:\\Dev\\Java\\FabricEmotes\\content\\v2\\"
-    };
+    private String[] repositories = new String[]{};
 
     private final Map<Integer, Future<Emote>> emotes = new HashMap<>();
     private final Map<String, Integer> codePoints = new HashMap<>();
@@ -34,7 +32,7 @@ public class RepositoryManager {
         apiEmotes.clear();
         codePoints.clear();
 
-        for (String repository : TEMP_REPOSITORIES) {
+        for (String repository : repositories) {
             try {
                 URL base = new URL(repository);
                 ApiEmotes res = ApiEmotes.fetchFrom(new URL(base, "emotes.json"));
@@ -84,6 +82,10 @@ public class RepositoryManager {
 
     public Collection<String> getEmoteNames() {
         return apiEmotes.keySet();
+    }
+
+    public void setRepositories(String[] repositories) {
+        this.repositories = repositories;
     }
 
     public static RepositoryManager getInstance() {
