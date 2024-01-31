@@ -30,7 +30,7 @@ public class RepositoryManager {
 
     public void reload() {
         remoteEmotes.clear();
-        codePoints.clear();
+        emotes.clear();
 
         for (String repository : repositories) {
             try {
@@ -44,6 +44,12 @@ public class RepositoryManager {
                 LOGGER.error("failed to load repository at " + repository, e);
             }
         }
+
+        codePoints.keySet().retainAll(remoteEmotes.keySet());
+
+        // We refetch existing emotes, so they get updated; we can safely do this with caching
+        codePoints.forEach((name, codePoint) ->
+                emotes.put(codePoint, emoteFetcher.fetchEmote(remoteEmotes.get(name))));
 
         LOGGER.info("emotes fetched: " + String.join(" ", remoteEmotes.keySet()));
     }
@@ -70,7 +76,7 @@ public class RepositoryManager {
     public Optional<Emote> getEmote(int codePoint) {
         Future<Emote> emote = emotes.get(codePoint);
 
-        if (emote.isDone()) {
+        if (emote != null && emote.isDone()) {
             try {
                 return Optional.of(emote.get());
             } catch (InterruptedException | ExecutionException e) {
