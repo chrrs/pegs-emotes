@@ -18,6 +18,8 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
     modImplementation("com.terraformersmc:modmenu:${property("mod_menu_version")}")
+
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")!!)!!)
 }
 
 tasks {
@@ -36,4 +38,8 @@ tasks {
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+loom {
+    accessWidenerPath.set(file("src/main/resources/pegsemotes.accesswidener"))
 }

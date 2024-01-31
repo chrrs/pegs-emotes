@@ -1,93 +1,104 @@
 package me.chrr.pegsemotes.emote;
 
-import me.chrr.pegsemotes.emote.source.LocalAnimatedEmoteSource;
-import me.chrr.pegsemotes.emote.source.LocalStaticEmoteSource;
-import me.chrr.pegsemotes.emote.source.RemoteEmote;
-import me.chrr.pegsemotes.emote.source.RemoteEmoteSource;
-import net.minecraft.client.MinecraftClient;
+import me.chrr.pegsemotes.EmoteMod;
+import me.chrr.pegsemotes.util.GifDecoder;
+import me.chrr.pegsemotes.util.ImageUtil;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.client.texture.TextureManager;
-import net.minecraft.util.Identifier;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Path;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class EmoteFetcher {
     private static final Logger LOGGER = LogManager.getLogger("pegs-emotes.EmoteFetcher");
-    private static int ITERATION = 0;
 
-    private final Set<Identifier> identifiers = new HashSet<>();
-    private final Map<Identifier, NativeImage> images = new HashMap<>();
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
-    /**
-     * Ideally, this should be called from the render thread.
-     */
-    public void clearCache() {
-        TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
-        for (Identifier identifier : identifiers) {
-            textureManager.destroyTexture(identifier);
-        }
+    public Future<Emote> fetchEmote(RemoteEmote remoteEmote) {
+        return executorService.submit(() -> {
+            ApiEmotes.ApiEmote apiEmote = remoteEmote.apiEmote;
 
-        identifiers.clear();
-        ITERATION += 1;
-    }
-
-    /**
-     * This should only be called from the render thread!
-     */
-    public void tryFetch(Emote emote) {
-        if (emote.getEmoteSource() instanceof RemoteEmoteSource remoteSource) {
-            if (remoteSource.state == RemoteEmoteSource.State.UNFETCHED) {
-                Identifier identifier = new Identifier("pegs-emotes", "emotes/" + emote.getId() + "/" + ITERATION);
-                if (identifiers.contains(identifier)) {
-                    remoteSource.textureIdentifier = identifier;
-                    upgradeEmote(emote, remoteSource);
-                    return;
+            try {
+                File cachedImage = getCacheDir().resolve(apiEmote.sha1 + "." + apiEmote.format).toFile();
+                if (cachedImage.isFile()) {
+                    try {
+                        return readEmote(apiEmote.format, new FileInputStream(cachedImage));
+                    } catch (Exception e) {
+                        LOGGER.error("could not read " + apiEmote.name + " from local cache", e);
+                    }
                 }
 
-                remoteSource.state = RemoteEmoteSource.State.FETCHING;
-                new Thread(() -> fetchEmoteImage(emote, identifier, remoteSource), "Emote fetcher").start();
-            } else if (remoteSource.state == RemoteEmoteSource.State.FETCHED) {
-                TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
-                textureManager.registerTexture(remoteSource.textureIdentifier, new NativeImageBackedTexture(images.get(remoteSource.textureIdentifier)));
+                URL url = new URL(remoteEmote.base, apiEmote.url);
+                URLConnection connection = url.openConnection();
+                connection.setRequestProperty("User-Agent", EmoteMod.USER_AGENT);
 
-                upgradeEmote(emote, remoteSource);
-                LOGGER.debug("upgraded emote '" + emote.getName() + "'");
+                byte[] bytes = connection.getInputStream().readAllBytes();
+                if (!apiEmote.sha1.equals(DigestUtils.sha1Hex(bytes))) {
+                    throw new IllegalStateException("SHA1 of fetched image does not match");
+                }
+
+                if (!cachedImage.isFile()) {
+                    //noinspection ResultOfMethodCallIgnored
+                    cachedImage.getParentFile().mkdirs();
+                    //noinspection ResultOfMethodCallIgnored
+                    cachedImage.createNewFile();
+
+                    try (FileOutputStream outputStream = new FileOutputStream(cachedImage)) {
+                        outputStream.write(bytes);
+                    }
+                }
+
+                return readEmote(apiEmote.format, new ByteArrayInputStream(bytes));
+            } catch (Exception e) {
+                LOGGER.error("failed to fetch " + apiEmote.name, e);
+                throw e;
             }
-        }
+        });
     }
 
-    private void fetchEmoteImage(Emote emote, Identifier identifier, RemoteEmoteSource remoteSource) {
-        try (InputStream stream = remoteSource.remoteEmote.url.openStream()) {
-            NativeImage image = NativeImage.read(stream);
-            identifiers.add(identifier);
-            images.put(identifier, image);
+    private Emote readEmote(String format, InputStream inputStream) throws IOException {
+        if (format.equals("png")) {
+            NativeImage image = NativeImage.read(inputStream);
+            if (image.getWidth() > 256 || image.getHeight() > 256) {
+                throw new IOException("emote image should be max. 256x256");
+            }
 
-            remoteSource.textureIdentifier = identifier;
-            remoteSource.state = RemoteEmoteSource.State.FETCHED;
+            return new Emote.Static(image);
+        } else if (format.equals("gif")) {
+            GifDecoder decoder = new GifDecoder();
 
-            LOGGER.debug("fetched image for emote '" + emote.getName() + "'");
-        } catch (IOException e) {
-            LOGGER.error("failed to fetch emote '" + emote.getName() + "'", e);
-            remoteSource.state = RemoteEmoteSource.State.ERRORED;
-        }
-    }
+            if (decoder.read(inputStream) != 0) {
+                throw new IOException("failed to decode GIF file");
+            }
 
-    private void upgradeEmote(Emote emote, RemoteEmoteSource remoteSource) {
-        if (remoteSource.remoteEmote instanceof RemoteEmote.Static) {
-            emote.setEmoteSource(new LocalStaticEmoteSource(remoteSource.textureIdentifier, images.get(remoteSource.textureIdentifier)));
-        } else if (remoteSource.remoteEmote instanceof RemoteEmote.Animated animatedEmote) {
-            emote.setEmoteSource(new LocalAnimatedEmoteSource(remoteSource.textureIdentifier, images.get(remoteSource.textureIdentifier), animatedEmote.frameTime));
+            if (decoder.getImage().getWidth() > 256 || decoder.getImage().getHeight() > 256) {
+                throw new IOException("emote image should be max. 256x256");
+            }
+
+            Emote.Animated.Frame[] frames = new Emote.Animated.Frame[decoder.getFrameCount()];
+            for (int i = 0; i < decoder.getFrameCount(); i++) {
+                NativeImage image = ImageUtil.fromBufferedImage(decoder.getFrame(i));
+                frames[i] = new Emote.Animated.Frame(image, decoder.getDelay(i));
+            }
+
+            return new Emote.Animated(frames);
         } else {
-            LOGGER.error("unknown emote source for emote '" + emote.getName() + "'");
-            remoteSource.state = RemoteEmoteSource.State.ERRORED;
+            throw new UnsupportedOperationException(format + " format is not supported");
         }
+    }
+
+    private Path getCacheDir() {
+        return FabricLoader.getInstance().getGameDir().resolve("pegs-emotes").resolve("emote-cache");
+    }
+
+    public record RemoteEmote(URL base, ApiEmotes.ApiEmote apiEmote) {
     }
 }

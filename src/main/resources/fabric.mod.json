@@ -6,7 +6,6 @@
     "description": "PEGS Twitch emotes for Minecraft chat.",
     "issues": "https://github.com/chrrs/PegsEmotes/issues",
     "authors": [
-        "AlgidSpace",
         "chrrrs",
         "fluteds"
     ],
@@ -16,13 +15,11 @@
     },
     "license": "MIT",
     "icon": "assets/pegs-emotes/icon.png",
+    "accessWidener": "pegsemotes.accesswidener",
     "environment": "client",
     "entrypoints": {
         "client": [
             "me.chrr.pegsemotes.EmoteMod"
-        ],
-        "modmenu": [
-            "me.chrr.pegsemotes.EmoteModMenu"
         ]
     },
     "mixins": [

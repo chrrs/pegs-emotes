@@ -1,32 +1,60 @@
 package me.chrr.pegsemotes.emote;
 
-import me.chrr.pegsemotes.emote.source.EmoteSource;
+import me.chrr.pegsemotes.font.ImageGlyph;
+import net.minecraft.client.font.Glyph;
+import net.minecraft.client.texture.NativeImage;
 
-public class Emote {
-    private final int id;
-    private final String name;
+import java.time.Instant;
+import java.util.Arrays;
 
-    private EmoteSource emoteSource;
+public abstract class Emote {
+    public abstract Glyph getFrame(Instant instant);
 
-    public Emote(String name, EmoteSource emoteSource) {
-        this.name = name;
-        this.id = name.hashCode();
-        this.emoteSource = emoteSource;
+    public static class Static extends Emote {
+        private final ImageGlyph glyph;
+
+        public Static(NativeImage image) {
+            this.glyph = new ImageGlyph(image);
+        }
+
+        @Override
+        public ImageGlyph getFrame(Instant instant) {
+            return glyph;
+        }
     }
 
-    public EmoteSource getEmoteSource() {
-        return emoteSource;
-    }
+    public static class Animated extends Emote {
+        private final Frame[] frames;
+        private final int loopTimeMs;
 
-    public void setEmoteSource(EmoteSource emoteSource) {
-        this.emoteSource = emoteSource;
-    }
+        public Animated(Frame[] frames) {
+            this.frames = frames;
+            this.loopTimeMs = Arrays.stream(frames).mapToInt(frame -> frame.delayMs).sum();
+        }
 
-    public int getId() {
-        return id;
-    }
+        @Override
+        public Glyph getFrame(Instant instant) {
+            int localTime = (int) (instant.toEpochMilli() % loopTimeMs);
 
-    public String getName() {
-        return name;
+            int cumulativeTime = 0;
+            for (Frame frame : frames) {
+                cumulativeTime += frame.delayMs;
+                if (cumulativeTime > localTime) {
+                    return frame.glyph;
+                }
+            }
+
+            return frames[0].glyph;
+        }
+
+        public static class Frame {
+            private final ImageGlyph glyph;
+            private final int delayMs;
+
+            public Frame(NativeImage image, int delayMs) {
+                this.glyph = new ImageGlyph(image);
+                this.delayMs = delayMs;
+            }
+        }
     }
 }

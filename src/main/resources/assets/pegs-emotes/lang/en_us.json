@@ -1,4 +1,5 @@
 {
     "key.pegs-emotes.reload": "Reload emotes",
-    "category.pegs-emotes": "PEGS Emotes"
+    "category.pegs-emotes": "PEGS Emotes",
+    "text.pegs-emotes.reload-complete": "Emotes reloaded. (%d active)"
 }

@@ -1,36 +1,53 @@
 package me.chrr.pegsemotes.mixin;
 
-import me.chrr.pegsemotes.emote.EmoteRegistry;
-import me.chrr.pegsemotes.util.TextEmoteReplacer;
-import me.chrr.pegsemotes.util.TextReaderVisitor;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawContext;
+import me.chrr.pegsemotes.EmoteMod;
+import me.chrr.pegsemotes.emote.RepositoryManager;
 import net.minecraft.client.gui.hud.ChatHud;
-import net.minecraft.text.OrderedText;
+import net.minecraft.text.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import java.util.List;
+import java.util.Optional;
 
 @Mixin(ChatHud.class)
-public abstract class ChatHudMixin {
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)I"))
-    private int drawWithShadow(DrawContext instance, TextRenderer textRenderer, OrderedText text, int x, int y, int color) {
-        TextReaderVisitor textReaderVisitor = new TextReaderVisitor();
-        text.accept(textReaderVisitor);
+public class ChatHudMixin {
+    @Unique
+    private static final String SPLIT_CHARS = " \t\n,.!?<>[]'\"|{}();=";
 
-        float emoteAlpha = (float) (color >> 24 & 0xff) / 255.0f;
+    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
+    public Text injectEmotes(Text message) {
+        MutableText out = MutableText.of(TextContent.EMPTY);
+        message.visit((style, text) -> {
+            int lastIndex = -1;
+            int lastEmote = 0;
+            for (int i = 0; i <= text.length(); i++) {
+                if (i == text.length() || SPLIT_CHARS.indexOf(text.charAt(i)) != -1) {
+                    String word = text.substring(lastIndex + 1, i);
 
-        List<TextEmoteReplacer.PositionedEmote> emotes = TextEmoteReplacer.replaceEmotes(textReaderVisitor, textRenderer, x, y);
+                    Optional<Integer> emoteCodePoint = RepositoryManager.getInstance().tryGetCodePoint(word);
+                    if (emoteCodePoint.isPresent()) {
+                        String emote = String.valueOf((char) (int) emoteCodePoint.get());
+                        Style emoteStyle = Style.EMPTY
+                                .withFont(EmoteMod.EMOTE_FONT)
+                                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(word)));
 
-        instance.getMatrices().translate(0, -0.5f, 0);
-        for (TextEmoteReplacer.PositionedEmote positionedEmote : emotes) {
-            EmoteRegistry.getInstance().ensureEmote(positionedEmote.emote());
-            positionedEmote.emote().getEmoteSource().draw(instance, positionedEmote.x(), positionedEmote.y(), emoteAlpha);
-        }
-        instance.getMatrices().translate(0, 0.5f, 0);
+                        out.append(Text.literal(text.substring(lastEmote, lastIndex + 1)).setStyle(style));
+                        out.append(Text.literal(emote).setStyle(emoteStyle));
+                        lastEmote = i;
+                    }
 
-        return instance.drawTextWithShadow(textRenderer, textReaderVisitor.getOrderedText(), x, y, color);
+                    lastIndex = i;
+                }
+            }
+
+            if (lastEmote != text.length()) {
+                out.append(Text.literal(text.substring(lastEmote)).setStyle(style));
+            }
+
+            return Optional.empty();
+        }, Style.EMPTY);
+        return out;
     }
 }
