@@ -1,6 +1,5 @@
 package me.chrr.pegsemotes;
 
-import me.chrr.pegsemotes.config.Config;
 import me.chrr.pegsemotes.emote.RepositoryManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;

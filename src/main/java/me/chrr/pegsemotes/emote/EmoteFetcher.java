@@ -22,8 +22,10 @@ public class EmoteFetcher {
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 
-    public Future<Emote> fetchEmote(ApiEmotes.ApiEmote apiEmote) {
+    public Future<Emote> fetchEmote(RemoteEmote remoteEmote) {
         return executorService.submit(() -> {
+            ApiEmotes.ApiEmote apiEmote = remoteEmote.apiEmote;
+
             try {
                 File cachedImage = getCacheDir().resolve(apiEmote.sha1 + "." + apiEmote.format).toFile();
                 if (cachedImage.isFile()) {
@@ -34,7 +36,7 @@ public class EmoteFetcher {
                     }
                 }
 
-                URL url = new URL(apiEmote.url);
+                URL url = new URL(remoteEmote.base, apiEmote.url);
                 URLConnection connection = url.openConnection();
                 connection.setRequestProperty("User-Agent", EmoteMod.USER_AGENT);
 
@@ -95,5 +97,8 @@ public class EmoteFetcher {
 
     private Path getCacheDir() {
         return FabricLoader.getInstance().getGameDir().resolve("pegs-emotes").resolve("emote-cache");
+    }
+
+    public record RemoteEmote(URL base, ApiEmotes.ApiEmote apiEmote) {
     }
 }

@@ -20,7 +20,7 @@ public class RepositoryManager {
 
     private final Map<Integer, Future<Emote>> emotes = new HashMap<>();
     private final Map<String, Integer> codePoints = new HashMap<>();
-    private final Map<String, ApiEmotes.ApiEmote> apiEmotes = new HashMap<>();
+    private final Map<String, EmoteFetcher.RemoteEmote> remoteEmotes = new HashMap<>();
 
     private final EmoteFetcher emoteFetcher = new EmoteFetcher();
     private int nextCodePoint = 0;
@@ -29,22 +29,23 @@ public class RepositoryManager {
     }
 
     public void reload() {
-        apiEmotes.clear();
+        remoteEmotes.clear();
         codePoints.clear();
 
         for (String repository : repositories) {
             try {
                 URL base = new URL(repository);
                 ApiEmotes res = ApiEmotes.fetchFrom(new URL(base, "emotes.json"));
+
                 for (ApiEmotes.ApiEmote emote : res.emotes) {
-                    apiEmotes.put(emote.name, emote);
+                    remoteEmotes.put(emote.name, new EmoteFetcher.RemoteEmote(base, emote));
                 }
             } catch (Exception e) {
                 LOGGER.error("failed to load repository at " + repository, e);
             }
         }
 
-        LOGGER.info("emotes fetched: " + String.join(" ", apiEmotes.keySet()));
+        LOGGER.info("emotes fetched: " + String.join(" ", remoteEmotes.keySet()));
     }
 
     public Optional<Integer> tryGetCodePoint(String name) {
@@ -53,12 +54,12 @@ public class RepositoryManager {
             return Optional.of(codePoint);
         }
 
-        ApiEmotes.ApiEmote apiEmote = apiEmotes.get(name);
-        if (apiEmote != null) {
+        EmoteFetcher.RemoteEmote remoteEmote = remoteEmotes.get(name);
+        if (remoteEmote != null) {
             codePoint = nextCodePoint++;
             codePoints.put(name, codePoint);
 
-            emotes.put(codePoint, emoteFetcher.fetchEmote(apiEmote));
+            emotes.put(codePoint, emoteFetcher.fetchEmote(remoteEmote));
 
             return Optional.of(codePoint);
         }
@@ -81,7 +82,7 @@ public class RepositoryManager {
     }
 
     public Collection<String> getEmoteNames() {
-        return apiEmotes.keySet();
+        return remoteEmotes.keySet();
     }
 
     public void setRepositories(String[] repositories) {
