@@ -29,9 +29,14 @@ public class ChatHudMixin {
                     Optional<Integer> emoteCodePoint = RepositoryManager.getInstance().tryGetCodePoint(word);
                     if (emoteCodePoint.isPresent()) {
                         String emote = String.valueOf((char) (int) emoteCodePoint.get());
+                        HoverEvent hoverEvent = style.getHoverEvent() != null
+                                ? style.getHoverEvent()
+                                : new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(word));
+
                         Style emoteStyle = Style.EMPTY
                                 .withFont(EmoteMod.EMOTE_FONT)
-                                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(word)));
+                                .withClickEvent(style.getClickEvent())
+                                .withHoverEvent(hoverEvent);
 
                         out.append(Text.literal(text.substring(lastEmote, lastIndex + 1)).setStyle(style));
                         out.append(Text.literal(emote).setStyle(emoteStyle));
