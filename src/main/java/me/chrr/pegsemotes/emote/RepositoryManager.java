@@ -1,5 +1,6 @@
 package me.chrr.pegsemotes.emote;
 
+import me.chrr.pegsemotes.config.Config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,8 +17,6 @@ public class RepositoryManager {
 
     private static final RepositoryManager INSTANCE = new RepositoryManager();
 
-    private String[] repositories = new String[]{};
-
     private final Map<Integer, Future<Emote>> emotes = new HashMap<>();
     private final Map<String, Integer> codePoints = new HashMap<>();
     private final Map<String, EmoteFetcher.RemoteEmote> remoteEmotes = new HashMap<>();
@@ -32,7 +31,7 @@ public class RepositoryManager {
         remoteEmotes.clear();
         emotes.clear();
 
-        for (String repository : repositories) {
+        for (String repository : Config.getInstance().repositories) {
             try {
                 URL base = new URL(repository);
                 ApiEmotes res = ApiEmotes.fetchFrom(new URL(base, "emotes.json"));
@@ -89,10 +88,6 @@ public class RepositoryManager {
 
     public Collection<String> getEmoteNames() {
         return remoteEmotes.keySet();
-    }
-
-    public void setRepositories(String[] repositories) {
-        this.repositories = repositories;
     }
 
     public static RepositoryManager getInstance() {

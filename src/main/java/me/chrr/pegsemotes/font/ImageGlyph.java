@@ -1,5 +1,6 @@
 package me.chrr.pegsemotes.font;
 
+import me.chrr.pegsemotes.config.Config;
 import net.minecraft.client.font.Glyph;
 import net.minecraft.client.font.GlyphRenderer;
 import net.minecraft.client.font.RenderableGlyph;
@@ -52,5 +53,10 @@ public class ImageGlyph implements Glyph, RenderableGlyph {
     @Override
     public float getBoldOffset() {
         return 0f;
+    }
+
+    @Override
+    public float getShadowOffset() {
+        return Config.getInstance().emoteShadow ? 1f : 0f;
     }
 }

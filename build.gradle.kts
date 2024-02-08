@@ -8,6 +8,7 @@ version = "${property("mod_version")}+mc${property("minecraft_version")}"
 
 repositories {
     maven("https://maven.terraformersmc.com")
+    maven("https://maven.shedaniel.me")
 }
 
 dependencies {
@@ -18,6 +19,10 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
     modImplementation("com.terraformersmc:modmenu:${property("mod_menu_version")}")
+
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${property("cloth_config_version")}") {
+        exclude("net.fabricmc.fabric-api")
+    }
 
     include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")!!)!!)
 }

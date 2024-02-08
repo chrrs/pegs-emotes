@@ -1,5 +1,10 @@
 {
     "key.pegs-emotes.reload": "Reload emotes",
     "category.pegs-emotes": "PEGS Emotes",
-    "text.pegs-emotes.reload-complete": "Emotes reloaded. (%d active)"
+    "text.pegs-emotes.reload-complete": "Emotes reloaded. (%d active)",
+    "title.pegs-emotes.options": "PEGS Emotes Options",
+    "option.pegs-emotes.active": "%d emotes loaded and active",
+    "option.pegs-emotes.active.tooltip": "NOTE: This number only updates whenever the config is reloaded.\nIf the repositories have changed, please re-enter this screen.",
+    "option.pegs-emotes.repositories": "Repository URLs",
+    "option.pegs-emotes.emote-shadow": "Emote shadow"
 }
