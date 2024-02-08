@@ -29,7 +29,7 @@ public abstract class Emote {
 
         public Animated(Frame[] frames) {
             this.frames = frames;
-            this.loopTimeMs = Arrays.stream(frames).mapToInt(frame -> frame.delayMs).sum();
+            this.loopTimeMs = Math.max(1, Arrays.stream(frames).mapToInt(frame -> frame.delayMs).sum());
         }
 
         @Override

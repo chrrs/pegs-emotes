@@ -4,7 +4,6 @@
     "version": "${version}",
     "name": "PEGS Emotes",
     "description": "PEGS Twitch emotes for Minecraft chat.",
-    "issues": "https://github.com/chrrs/PegsEmotes/issues",
     "authors": [
         "chrrrs",
         "fluteds"

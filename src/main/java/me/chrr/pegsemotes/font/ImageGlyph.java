@@ -16,7 +16,7 @@ public class ImageGlyph implements Glyph, RenderableGlyph {
 
     @Override
     public float getAdvance() {
-        return (float) getWidth() / ((float) getHeight() / 8f) + 1f;
+        return (float) getWidth() / ((float) getHeight() / 7f) + 1f;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ImageGlyph implements Glyph, RenderableGlyph {
 
     @Override
     public float getOversample() {
-        return 1;
+        return (float) getHeight() / 7f;
     }
 
     @Override

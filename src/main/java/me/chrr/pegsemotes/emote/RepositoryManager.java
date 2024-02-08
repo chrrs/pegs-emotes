@@ -23,7 +23,7 @@ public class RepositoryManager {
     private final Map<String, EmoteFetcher.RemoteEmote> remoteEmotes = new HashMap<>();
 
     private final EmoteFetcher emoteFetcher = new EmoteFetcher();
-    private int nextCodePoint = 0;
+    private int nextCodePoint = 0xe000;
 
     private RepositoryManager() {
     }

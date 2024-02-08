@@ -8,8 +8,7 @@
     "client": [
         "ChatHudMixin",
         "ClientCommandSourceMixin",
-        "FontManagerMixin",
-        "TextRendererDrawerMixin"
+        "FontManagerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
