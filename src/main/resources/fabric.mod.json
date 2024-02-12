@@ -9,8 +9,8 @@
         "fluteds"
     ],
     "contact": {
-        "sources": "https://github.com/chrrs/PegsEmotes",
-        "issues": "https://github.com/chrrs/PegsEmotes/issues"
+        "sources": "https://github.com/chrrs/pegs-emotes",
+        "issues": "https://github.com/chrrs/pegs-emotes/issues"
     },
     "license": "MIT",
     "icon": "assets/pegs-emotes/icon.png",
