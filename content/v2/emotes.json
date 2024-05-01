@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2024-02-08T17:11:21.259761",
+    "lastUpdated": "2024-05-01T21:03:33.999084",
     "emotes": [
         {
             "name": "5Head",
@@ -588,6 +588,12 @@
             "format": "png",
             "url": "https://cdn.betterttv.net/emote/605e54817493072efdeb52b1/2x.png",
             "sha1": "5dd8918e543b5cb8f0ec617faced1bf4a3541605"
+        },
+        {
+            "name": "peepoTalk",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/608f154f39b5010444d0a765/2x.gif",
+            "sha1": "846f10e0d6a30d590976e60d0ba17ad2dfd0a201"
         },
         {
             "name": "peepoTrip",
