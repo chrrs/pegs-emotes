@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2024-05-01T21:03:33.999084",
+    "lastUpdated": "2024-05-13T13:23:31.845067",
     "emotes": [
         {
             "name": "5Head",
@@ -714,6 +714,12 @@
             "format": "gif",
             "url": "https://cdn.betterttv.net/emote/6066beb6a407570b72f298fd/2x.gif",
             "sha1": "bcbdebae7689180cc66b6cbd9bc22e60bbe77b2a"
+        },
+        {
+            "name": "sadCat",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/5e116a78b640b52102c64372/2x.gif",
+            "sha1": "10fe7416ba8b96041438b5392b2a97cc9de5f3e6"
         },
         {
             "name": "Sadge",
