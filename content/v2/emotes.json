@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2024-05-01T21:03:33.999084",
+    "lastUpdated": "2024-05-13T13:42:11.997971",
     "emotes": [
         {
             "name": "5Head",
@@ -356,6 +356,12 @@
             "sha1": "6d83afeedfe8d18d9cfb4d3fe7f3975330d82c03"
         },
         {
+            "name": "MEOWDY",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/641b685809065320f4a2cf72/2x.gif",
+            "sha1": "0f360cfe68ba8217692ce9c6a11418a517d9a51c"
+        },
+        {
             "name": "MmmHmm",
             "format": "gif",
             "url": "https://cdn.betterttv.net/emote/5a8e0e8d86cbeb5bd31abb8b/2x.gif",
@@ -704,6 +710,12 @@
             "sha1": "37bef63cf954523fa3e45206c967fa131085473c"
         },
         {
+            "name": "raccJAM",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/661a86e551d12d30f01dc47e/2x.gif",
+            "sha1": "b4ac85b7946fe366fdd5ba8eefb2bd4a15401811"
+        },
+        {
             "name": "RAGEY",
             "format": "gif",
             "url": "https://cdn.betterttv.net/emote/634d7113b62997baec52b523/2x.gif",
@@ -714,6 +726,12 @@
             "format": "gif",
             "url": "https://cdn.betterttv.net/emote/6066beb6a407570b72f298fd/2x.gif",
             "sha1": "bcbdebae7689180cc66b6cbd9bc22e60bbe77b2a"
+        },
+        {
+            "name": "sadCat",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/5e116a78b640b52102c64372/2x.gif",
+            "sha1": "10fe7416ba8b96041438b5392b2a97cc9de5f3e6"
         },
         {
             "name": "Sadge",
