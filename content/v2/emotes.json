@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2024-05-13T13:23:31.845067",
+    "lastUpdated": "2024-05-13T13:42:11.997971",
     "emotes": [
         {
             "name": "5Head",
@@ -356,6 +356,12 @@
             "sha1": "6d83afeedfe8d18d9cfb4d3fe7f3975330d82c03"
         },
         {
+            "name": "MEOWDY",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/641b685809065320f4a2cf72/2x.gif",
+            "sha1": "0f360cfe68ba8217692ce9c6a11418a517d9a51c"
+        },
+        {
             "name": "MmmHmm",
             "format": "gif",
             "url": "https://cdn.betterttv.net/emote/5a8e0e8d86cbeb5bd31abb8b/2x.gif",
@@ -702,6 +708,12 @@
             "format": "png",
             "url": "https://cdn.betterttv.net/emote/5f3ef6123212445d6fb49f1a/2x.png",
             "sha1": "37bef63cf954523fa3e45206c967fa131085473c"
+        },
+        {
+            "name": "raccJAM",
+            "format": "gif",
+            "url": "https://cdn.betterttv.net/emote/661a86e551d12d30f01dc47e/2x.gif",
+            "sha1": "b4ac85b7946fe366fdd5ba8eefb2bd4a15401811"
         },
         {
             "name": "RAGEY",
