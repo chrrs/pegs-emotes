@@ -4,7 +4,7 @@ import json
 import requests
 import sys
 
-file = "content/v2/emotes.json"
+file = "../content/v2/emotes.json"
 
 emotes = {}
 with open(file) as f:
