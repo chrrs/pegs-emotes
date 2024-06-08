@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2024-06-04T11:18:48.104500",
+    "lastUpdated": "2024-06-08T13:59:14.346612",
     "emotes": [
         {
             "name": "5Head",
@@ -38,6 +38,12 @@
             "sha1": "328b37bdc4dcc9c5c5add516ce1996829798c693"
         },
         {
+            "name": "AAAA",
+            "format": "gif",
+            "url": "downloaded/AAAA.gif",
+            "sha1": "02cd0d1f472255329d88877f6b1d660a11578f44"
+        },
+        {
             "name": "AINTNOWAY",
             "format": "gif",
             "url": "downloaded/AINTNOWAY.gif",
@@ -48,6 +54,12 @@
             "format": "png",
             "url": "downloaded/ALEGRAS.png",
             "sha1": "5e9e4186f087fe70b7e92f2cbdba45b8556ad7cb"
+        },
+        {
+            "name": "ALOO",
+            "format": "png",
+            "url": "downloaded/ALOO.png",
+            "sha1": "c85d789a8b3a541ecede67ce10e93e98820c67e1"
         },
         {
             "name": "Aware",
@@ -74,6 +86,12 @@
             "sha1": "44db33dd2a762e8f710081ef9b6b427879b9b677"
         },
         {
+            "name": "Binoculars",
+            "format": "png",
+            "url": "downloaded/Binoculars.png",
+            "sha1": "2bfc4fca096347bae89c3ca7a5fb060731935710"
+        },
+        {
             "name": "BlanketJam",
             "format": "gif",
             "url": "downloaded/BlanketJam.gif",
@@ -92,6 +110,12 @@
             "sha1": "7052fa36ad31d5c4a41b9975a8653bd3d2028174"
         },
         {
+            "name": "CatBoy",
+            "format": "png",
+            "url": "emotes/CatBoy.png",
+            "sha1": "c756776a305a3367b870385c7d1874eb27f26eda"
+        },
+        {
             "name": "catJAM",
             "format": "gif",
             "url": "downloaded/catJAM.gif",
@@ -102,6 +126,12 @@
             "format": "gif",
             "url": "downloaded/catJAMJAM.gif",
             "sha1": "c6ea28e5d85427e2d1b2656070a6f59d6e68c0f5"
+        },
+        {
+            "name": "catKILL",
+            "format": "gif",
+            "url": "downloaded/catKILL.gif",
+            "sha1": "5ec0c114d47da2f271919e431e9647cfa1be32c2"
         },
         {
             "name": "catKISS",
@@ -128,10 +158,22 @@
             "sha1": "e049636ee296339f366dfb4cc5aecac9da8a1a27"
         },
         {
+            "name": "catPLS",
+            "format": "gif",
+            "url": "downloaded/catPLS.gif",
+            "sha1": "e1808282191b67a2bc2c94934858b72cee54c52d"
+        },
+        {
             "name": "catPUNCH",
             "format": "gif",
             "url": "downloaded/catPUNCH.gif",
             "sha1": "1b55582232a683a213866f532b760facfaff3ea6"
+        },
+        {
+            "name": "catSmile",
+            "format": "gif",
+            "url": "downloaded/catSmile.gif",
+            "sha1": "2ff1584d63dfabd71fd22c478677d408587347db"
         },
         {
             "name": "Chatting",
@@ -140,16 +182,34 @@
             "sha1": "782910c617c46c92cd1823f21ebf0f8c5d12533c"
         },
         {
+            "name": "ChipiChipi",
+            "format": "gif",
+            "url": "downloaded/ChipiChipi.gif",
+            "sha1": "d88b086918a306887f266e8e05e611368fe9eb8d"
+        },
+        {
             "name": "Clap",
             "format": "gif",
             "url": "downloaded/Clap.gif",
             "sha1": "c1462c831eb4931055a2ea155f64dd4fa3dff6f2"
         },
         {
+            "name": "CLEAN",
+            "format": "gif",
+            "url": "downloaded/CLEAN.gif",
+            "sha1": "54fd55092caea5ee9f9281334cb3879e2e87949f"
+        },
+        {
             "name": "Clueless",
             "format": "png",
             "url": "downloaded/Clueless.png",
             "sha1": "70b1bef536595bf8246ec68187b725af616eee26"
+        },
+        {
+            "name": "Comfi",
+            "format": "png",
+            "url": "downloaded/Comfi.png",
+            "sha1": "80c4d1783200d7fe00e91a7e8d963872ac966b05"
         },
         {
             "name": "COPIUM",
@@ -204,6 +264,12 @@
             "format": "png",
             "url": "downloaded/EZ.png",
             "sha1": "32be40759cf6289649c3d6b1ad9020ce9dfab3f6"
+        },
+        {
+            "name": "FeelsAmazingMan",
+            "format": "png",
+            "url": "downloaded/FeelsAmazingMan.png",
+            "sha1": "4c46ac00033bd20a9fb378b85cd4a0779fa5dab4"
         },
         {
             "name": "FeelsDankMan",
@@ -344,6 +410,24 @@
             "sha1": "aa639647f5deefcb9f75d70b8c1ea67446822929"
         },
         {
+            "name": "Looking",
+            "format": "png",
+            "url": "downloaded/Looking.png",
+            "sha1": "f2f3ffe2783bd0214bc26be918d63e6343c27550"
+        },
+        {
+            "name": "LookUp",
+            "format": "gif",
+            "url": "downloaded/LookUp.gif",
+            "sha1": "087a97c26eb8b7fbcf082de9f5d5ce64c210d18f"
+        },
+        {
+            "name": "LOST",
+            "format": "gif",
+            "url": "downloaded/LOST.gif",
+            "sha1": "9fd35f6f95af807ae47f1e7a2a83d75406aff09f"
+        },
+        {
             "name": "Madge",
             "format": "png",
             "url": "downloaded/Madge.png",
@@ -398,10 +482,82 @@
             "sha1": "cf62fe4f36d0ba4aff178686639d18483eb3d0d8"
         },
         {
+            "name": "monkaSTEER",
+            "format": "gif",
+            "url": "downloaded/monkaSTEER.gif",
+            "sha1": "4451caaa9c50c29624f381ab8efa1a8ad5898cad"
+        },
+        {
             "name": "monkaW",
             "format": "png",
             "url": "downloaded/monkaW.png",
             "sha1": "4d1c032fa3da4666fa6d76895e0a7a27d8e6aa37"
+        },
+        {
+            "name": "MYAAA",
+            "format": "gif",
+            "url": "downloaded/MYAAA.gif",
+            "sha1": "594176e8db4fda12dd719c86d0aaa1155d45cd42"
+        },
+        {
+            "name": "Niko",
+            "format": "png",
+            "url": "emotes/Niko.png",
+            "sha1": "8f14649236d8a3c444e93288c663656732e8ada6"
+        },
+        {
+            "name": "Niko3",
+            "format": "png",
+            "url": "downloaded/Niko3.png",
+            "sha1": "6b7bb7f8352f1ab3ba8a89702bbddcbd38507337"
+        },
+        {
+            "name": "NikoAF",
+            "format": "png",
+            "url": "downloaded/NikoAF.png",
+            "sha1": "fa1e091f2ece81d94f4c948f2203107237de5b66"
+        },
+        {
+            "name": "nikoBased",
+            "format": "png",
+            "url": "downloaded/nikoBased.png",
+            "sha1": "2935c47304dcdd50aa4d71c43ec98e8cc67cc9a6"
+        },
+        {
+            "name": "nikoBlush",
+            "format": "gif",
+            "url": "downloaded/nikoBlush.gif",
+            "sha1": "e7a3b91846a051297e182584a0ef4b64eb5dfd83"
+        },
+        {
+            "name": "Nikoggers",
+            "format": "png",
+            "url": "emotes/Nikoggers.png",
+            "sha1": "379ba6f69caaf50e45f56d4063bd173398532f18"
+        },
+        {
+            "name": "NikoHuh",
+            "format": "png",
+            "url": "downloaded/NikoHuh.png",
+            "sha1": "6becdfc786a4f6234b725421813da7dceef5a3db"
+        },
+        {
+            "name": "NikoLeft",
+            "format": "png",
+            "url": "downloaded/NikoLeft.png",
+            "sha1": "65147ab7910f1725c4e01f52e7bed8a03ce3c3c5"
+        },
+        {
+            "name": "NikoMask",
+            "format": "png",
+            "url": "downloaded/NikoMask.png",
+            "sha1": "eaf0d0e7c4dda3ccfe0195fa10aa97cf2e07a430"
+        },
+        {
+            "name": "nikoPancakes",
+            "format": "png",
+            "url": "emotes/nikoPancakes.png",
+            "sha1": "4ec4829ffeb64575c42301c9a6a6da014760889a"
         },
         {
             "name": "nikoPls",
@@ -410,10 +566,64 @@
             "sha1": "65b48e065e0d35dc56b262d6fe99d81e354109e9"
         },
         {
+            "name": "NikoPop",
+            "format": "gif",
+            "url": "downloaded/NikoPop.gif",
+            "sha1": "5e2dca62ad7b16e67b8348fcebe300dcf69c5929"
+        },
+        {
             "name": "nikoQuake",
             "format": "gif",
             "url": "downloaded/nikoQuake.gif",
             "sha1": "c8244dee3347be57b669904dc4d37bba301d2043"
+        },
+        {
+            "name": "NikoRight",
+            "format": "png",
+            "url": "downloaded/NikoRight.png",
+            "sha1": "0c4e2f6afea818fb85df3f85156d24f4abfa3ed3"
+        },
+        {
+            "name": "NikoSad",
+            "format": "png",
+            "url": "downloaded/NikoSad.png",
+            "sha1": "b8ee16c9ce6519035659b9ef27f78720298611b7"
+        },
+        {
+            "name": "NikoStare",
+            "format": "png",
+            "url": "downloaded/NikoStare.png",
+            "sha1": "61c486f180f2d37e280f9791385681ec7f48bdca"
+        },
+        {
+            "name": "nikoSun",
+            "format": "png",
+            "url": "downloaded/nikoSun.png",
+            "sha1": "2a93f9023741e7853e0a6806360efc5158f31cd0"
+        },
+        {
+            "name": "NikoWhat",
+            "format": "png",
+            "url": "downloaded/NikoWhat.png",
+            "sha1": "af2bd84d24ec5572c7118c3abf61b8fca1ee513c"
+        },
+        {
+            "name": "nikoWow",
+            "format": "png",
+            "url": "emotes/nikoWow.png",
+            "sha1": "deeb69b95f55d51161f2681fb5a5aba766cec2dc"
+        },
+        {
+            "name": "NikoYawn",
+            "format": "png",
+            "url": "downloaded/NikoYawn.png",
+            "sha1": "9215357b45f1755a913a8276a18636325798a674"
+        },
+        {
+            "name": "nikoYikes",
+            "format": "png",
+            "url": "downloaded/nikoYikes.png",
+            "sha1": "f6ba7c198db95986281cffde00820005d0289da6"
         },
         {
             "name": "NODDERS",
@@ -452,6 +662,12 @@
             "sha1": "c57ba27be78e830a9853bbd0d4e75344dd3207c5"
         },
         {
+            "name": "OMEGADANCE",
+            "format": "gif",
+            "url": "downloaded/OMEGADANCE.gif",
+            "sha1": "5e1cddad4fa3698f4c8725a2a131dcecdc16c1f7"
+        },
+        {
             "name": "OMEGALUL",
             "format": "png",
             "url": "downloaded/OMEGALUL.png",
@@ -474,6 +690,18 @@
             "format": "gif",
             "url": "downloaded/PAUSERS.gif",
             "sha1": "07d9687b4d7bdef2d65b9939487602f168900137"
+        },
+        {
+            "name": "pedroP",
+            "format": "gif",
+            "url": "downloaded/pedroP.gif",
+            "sha1": "a6e13a7bfb482e18b1aa778bd23d538cf5c24c2c"
+        },
+        {
+            "name": "PEEPEES",
+            "format": "gif",
+            "url": "downloaded/PEEPEES.gif",
+            "sha1": "cbf41cb3a902be3af5b99649f495c5d95e6bd85e"
         },
         {
             "name": "Peepi",
@@ -506,6 +734,12 @@
             "sha1": "e390ce9d2fb79d68bff38a4f0f50447087cb3b47"
         },
         {
+            "name": "peepoCute",
+            "format": "png",
+            "url": "downloaded/peepoCute.png",
+            "sha1": "57557a8799ac815814e82f06d52f44f8ce632a03"
+        },
+        {
             "name": "peepoFlower",
             "format": "png",
             "url": "downloaded/peepoFlower.png",
@@ -534,6 +768,12 @@
             "format": "gif",
             "url": "downloaded/peepoHey.gif",
             "sha1": "b1668d93ebad48ccea3366a69f779994ae4ac571"
+        },
+        {
+            "name": "peepoHug",
+            "format": "png",
+            "url": "downloaded/peepoHug.png",
+            "sha1": "e48593b6e98ac8b53b3bfdc618d1e79185cca1ba"
         },
         {
             "name": "peepoKiss",
@@ -588,6 +828,12 @@
             "format": "png",
             "url": "downloaded/peepoSitti.png",
             "sha1": "80a6283bd069513ac382277d06517cffe211d8f8"
+        },
+        {
+            "name": "peepoSittiCar",
+            "format": "png",
+            "url": "downloaded/peepoSittiCar.png",
+            "sha1": "285eb4a70f9a57b20b16cab34a707f158e3a2379"
         },
         {
             "name": "PeepoSmile",
@@ -686,6 +932,24 @@
             "sha1": "6f967fb2d168f3196ce6e9dcef369b264f3b3cfc"
         },
         {
+            "name": "popCat",
+            "format": "gif",
+            "url": "downloaded/popCat.gif",
+            "sha1": "4863ee15810a655c048b4f0eb589aa3c0f7cef24"
+        },
+        {
+            "name": "popCatPopcorn",
+            "format": "gif",
+            "url": "downloaded/popCatPopcorn.gif",
+            "sha1": "177b6c1ad133df8bb48e113af7727de0a923a611"
+        },
+        {
+            "name": "ppHop",
+            "format": "gif",
+            "url": "downloaded/ppHop.gif",
+            "sha1": "613f67c1fc39a128f4d722a31f854d754a4f1430"
+        },
+        {
             "name": "ppL",
             "format": "png",
             "url": "emotes/ppL.png",
@@ -714,6 +978,12 @@
             "format": "png",
             "url": "downloaded/Prayge.png",
             "sha1": "5860aaba3b8ef64d320019cfbc7aba9b4a121d69"
+        },
+        {
+            "name": "Pwease",
+            "format": "png",
+            "url": "downloaded/Pwease.png",
+            "sha1": "e59ee019a1d3efaf066715a18649be0e863b8de9"
         },
         {
             "name": "raccJAM",
@@ -758,6 +1028,12 @@
             "sha1": "cdfb22931cfd5ec1512a068c4cf77d4b6ab83871"
         },
         {
+            "name": "SILLY",
+            "format": "png",
+            "url": "downloaded/SILLY.png",
+            "sha1": "bd1fae2282738388303838886b8a4a825ec108f4"
+        },
+        {
             "name": "SMHing",
             "format": "gif",
             "url": "downloaded/SMHing.gif",
@@ -768,6 +1044,12 @@
             "format": "gif",
             "url": "downloaded/SNIFFA.gif",
             "sha1": "8e882d5ee231e196cfd1cffb9e3dea74a9f4b754"
+        },
+        {
+            "name": "SoupTime",
+            "format": "gif",
+            "url": "downloaded/SoupTime.gif",
+            "sha1": "5b1abf4112f97cfbae64e030e1791415383ae5fb"
         },
         {
             "name": "SourPls",
