@@ -7,7 +7,6 @@ import net.minecraft.util.Identifier;
 
 import java.time.Instant;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class EmoteFontStorage extends FontStorage {
@@ -15,11 +14,6 @@ public class EmoteFontStorage extends FontStorage {
 
     public EmoteFontStorage(TextureManager textureManager, Identifier id) {
         super(textureManager, id);
-    }
-
-    @Override
-    public void setFonts(List<Font> fonts) {
-        throw new UnsupportedOperationException();
     }
 
     @Override

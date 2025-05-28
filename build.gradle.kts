@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("fabric-loom") version "1.0-SNAPSHOT"
+    id("fabric-loom") version "1.10-SNAPSHOT"
 }
 
 group = property("maven_group")!!
@@ -41,8 +41,8 @@ tasks {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 loom {

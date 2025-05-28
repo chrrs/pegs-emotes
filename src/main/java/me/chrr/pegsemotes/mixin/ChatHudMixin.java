@@ -16,9 +16,9 @@ public class ChatHudMixin {
     @Unique
     private static final String SPLIT_CHARS = " \t\n,.!?<>[]'\"|{}();=";
 
-    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
+    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     public Text injectEmotes(Text message) {
-        MutableText out = MutableText.of(TextContent.EMPTY);
+        MutableText out = MutableText.of(PlainTextContent.EMPTY);
         message.visit((style, text) -> {
             int lastIndex = -1;
             int lastEmote = 0;

@@ -25,7 +25,7 @@ public class EmoteMod implements ClientModInitializer {
     private static final Logger LOGGER = LogManager.getLogger("pegs-emotes");
 
     public static final String USER_AGENT = "PegsEmotes (github.com/chrrs)";
-    public static final Identifier EMOTE_FONT = new Identifier("pegs-emotes", "font/emotes");
+    public static final Identifier EMOTE_FONT = Identifier.of("pegs-emotes", "font/emotes");
 
     @Override
     public void onInitializeClient() {
@@ -40,7 +40,7 @@ public class EmoteMod implements ClientModInitializer {
                 .registerReloadListener(new SimpleSynchronousResourceReloadListener() {
                     @Override
                     public Identifier getFabricId() {
-                        return new Identifier("pegs-emotes", "emote-reloader");
+                        return Identifier.of("pegs-emotes", "emote-reloader");
                     }
 
                     @Override
