@@ -1,8 +1,10 @@
 package me.chrr.pegsemotes.font;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.textures.GpuTexture;
 import me.chrr.pegsemotes.config.Config;
+import net.minecraft.client.font.BakedGlyph;
 import net.minecraft.client.font.Glyph;
-import net.minecraft.client.font.GlyphRenderer;
 import net.minecraft.client.font.RenderableGlyph;
 import net.minecraft.client.texture.NativeImage;
 
@@ -21,7 +23,7 @@ public class ImageGlyph implements Glyph, RenderableGlyph {
     }
 
     @Override
-    public GlyphRenderer bake(Function<RenderableGlyph, GlyphRenderer> glyphRendererGetter) {
+    public BakedGlyph bake(Function<RenderableGlyph, BakedGlyph> glyphRendererGetter) {
         return glyphRendererGetter.apply(this);
     }
 
@@ -36,8 +38,8 @@ public class ImageGlyph implements Glyph, RenderableGlyph {
     }
 
     @Override
-    public void upload(int x, int y) {
-        image.upload(0, x, y, 0, 0, image.getWidth(), image.getHeight(), true, true, true, false);
+    public void upload(int x, int y, GpuTexture texture) {
+        RenderSystem.getDevice().createCommandEncoder().writeToTexture(texture, image, 0, x, y, image.getWidth(), image.getHeight(), 0, 0);
     }
 
     @Override

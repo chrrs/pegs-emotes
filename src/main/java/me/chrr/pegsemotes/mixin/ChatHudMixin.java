@@ -31,7 +31,7 @@ public class ChatHudMixin {
                         String emote = String.valueOf((char) (int) emoteCodePoint.get());
                         HoverEvent hoverEvent = style.getHoverEvent() != null
                                 ? style.getHoverEvent()
-                                : new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(word));
+                                : new HoverEvent.ShowText(Text.literal(word));
 
                         Style emoteStyle = Style.EMPTY
                                 .withFont(EmoteMod.EMOTE_FONT)

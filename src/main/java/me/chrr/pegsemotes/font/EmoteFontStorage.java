@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EmoteFontStorage extends FontStorage {
-    private final Map<Glyph, GlyphRenderer> glyphRendererCache = new HashMap<>();
+    private final Map<Glyph, BakedGlyph> bakedGlyphCache = new HashMap<>();
 
     public EmoteFontStorage(TextureManager textureManager, Identifier id) {
         super(textureManager, id);
@@ -25,8 +25,8 @@ public class EmoteFontStorage extends FontStorage {
     }
 
     @Override
-    public GlyphRenderer getGlyphRenderer(int codePoint) {
+    public BakedGlyph getBaked(int codePoint) {
         Glyph glyph = getGlyph(codePoint, false);
-        return glyphRendererCache.computeIfAbsent(glyph, g -> g.bake(this::getGlyphRenderer));
+        return bakedGlyphCache.computeIfAbsent(glyph, g -> g.bake(this::bake));
     }
 }
